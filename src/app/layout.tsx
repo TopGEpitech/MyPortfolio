@@ -6,8 +6,8 @@ import '@/app/scss/App.module.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-    title: 'Younes Kadi - Develloper',
-    description: 'Created with Next Js 13',
+    title: 'Younes Kad - Portfolio',
+    description: 'Freelance FullStack Developer',
 }
 
 export default function RootLayout({
