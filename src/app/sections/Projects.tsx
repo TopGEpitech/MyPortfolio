@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 function Projects() {
   const projectsData = [
     {
-      image: "/Spotify2.png",
+      image: "/spotify2.png",
       projectName: "Spotify Clone",
       projectLink: "https://youneskad.dev/#work",
       projectDescription:
