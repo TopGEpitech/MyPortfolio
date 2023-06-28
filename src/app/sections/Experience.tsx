@@ -38,7 +38,7 @@ function Experience() {
       ],
     },
     {
-      name: "A BATHING APE",
+      name: "BAPE",
       role: "Influencer",
       url: "https://www.instagram.com/bape__france/",
       start: "September 2018",
