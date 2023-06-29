@@ -27,7 +27,7 @@ function Projects() {
       projectName: "Twitter Clone",
       projectLink: "https://youneskad.dev/#work",
       projectDescription:
-        "TThis web application mirrors the functionalities of Twitter, providing users with a platform to connect and share their thoughts. It includes features such as user profiles, real-time notifications, post creation and sharing, and interactive elements like comments, likes, and retweets. The clone emphasizes an intuitive user interface, fostering user engagement and facilitating seamless social interactions akin to Twitter.",
+        "This web application mirrors the functionalities of Twitter, providing users with a platform to connect and share their thoughts. It includes features such as user profiles, real-time notifications, post creation and sharing, and interactive elements like comments, likes, and retweets. The clone emphasizes an intuitive user interface, fostering user engagement and facilitating seamless social interactions akin to Twitter.",
       projectTech: [
         "Laravel Symfony",
         "Docker",

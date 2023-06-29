@@ -63,7 +63,7 @@ function Navbar() {
             ease: "easeInOut",
           }}
         >
-          <Link href="youneskad.dev">
+          <Link href="/">
             <Logo />
           </Link>
         </motion.div>
