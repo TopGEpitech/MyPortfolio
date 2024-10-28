@@ -14,7 +14,19 @@ function Experience() {
 
   const expereinces = [
     {
-      name: "Abbi Tech",
+      name: "FreeEnergie",
+      role: "TypeScript & JavaScript - Developer",
+      url: "https://www.linkedin.com/company/freeenergie",
+      start: "Currently",
+      end: "1 year",
+      shortDescription: [
+        "Currently leading the development of a CRM with Angular for the front-end and Node.js for the back-end, managing thousands of clients and employees. This platform optimizes internal management and provides an effective solution for various business needs.",
+        "Also developing a sales application in Next.js and AdonisJS, assisting sales representatives in client interactions. This app uses APIs to improve the efficiency and speed of sales processes.",
+      ],
+    },
+
+    {
+      name: "MBen Dev",
       role: "Freelance Developer",
       url: "https://www.linkedin.com/company/abbi-tech/?trk=similar-pages",
       start: "May 2023",
@@ -88,7 +100,7 @@ function Experience() {
             <h3>
               <span>{expereinces[selected].role}</span>
               <span className="exp-details-position-company">
-                &nbsp;@&nbsp;
+                &nbsp;@
                 <Link href={expereinces[selected].url} className="link">
                   {expereinces[selected].name}
                 </Link>
@@ -103,7 +115,7 @@ function Experience() {
                   <li key={index} className="exp-details-list-item">
                     {description}
                   </li>
-                )
+                ),
               )}
             </ul>
           </div>

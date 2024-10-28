@@ -6,7 +6,7 @@ import '@/app/scss/App.module.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-    title: 'Younes Kad - Portfolio',
+    title: 'Younes K - Portfolio',
     description: 'Freelance FullStack Developer',
 }
 

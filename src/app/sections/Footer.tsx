@@ -4,15 +4,16 @@ import { FaRegStar } from "react-icons/fa";
 import { FiGitBranch } from "react-icons/fi";
 
 function Footer() {
-
   return (
     <footer>
       <Link
-        href="https://github.com/TopGdev"
+        href="https://github.com/TopGEpitech"
         target="_blank"
         className="footer-link"
       >
-        <span className="footer-info">Thank you for considering my portfolio.</span>
+        <span className="footer-info">
+          Thank you for considering my portfolio.
+        </span>
       </Link>
     </footer>
   );

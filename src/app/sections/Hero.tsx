@@ -27,7 +27,7 @@ function Hero() {
           delay: 0.75,
         }}
       >
-        Younes Kad
+        Younes K.
       </motion.h2>
       <motion.h3
         className="hero-title-large hero-title-sub"
@@ -51,10 +51,10 @@ function Hero() {
           delay: 1.35,
         }}
       >
-          Passionate about applying my knowledge to create innovative and digital solutions.
-          Dedicated to my studies, I continuously strive to learn and grow, aiming to become a skilled and accomplished
-          Fullstack Developer as a student at
-        <Link href="https://epitech.eu" target="_blank" className="link">Epitech.
+          Passionate about applying my knowledge to create innovative digital solutions,
+          I am dedicated to continuous learning and growth. My goal is to become a skilled and accomplished Fullstack Developer through the projects I worked on during my time
+          at {' '}
+        <Link href="https://epitech.eu" target="_blank" className="link"> EPITECH.
         </Link>
       </motion.p>
       <motion.div

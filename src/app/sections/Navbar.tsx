@@ -13,31 +13,55 @@ function Navbar() {
     { name: "About", link: "/#about" },
     { name: "Experience", link: "/#experience" },
     { name: "Work", link: "/#work" },
-    {
-      name: "Contact",
-      link: "/#contact",
-    },
+    { name: "Contact", link: "/#contact" },
   ];
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.pageYOffset > 100
-        ? setNavbarVisible(true)
-        : setNavbarVisible(false);
-    });
+    const handleScroll = () => {
+      window.scrollY > 100 ? setNavbarVisible(true) : setNavbarVisible(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
     const links = document.querySelectorAll(".nav-items-list-item-link");
+
     links.forEach((link) => {
-      link.addEventListener("click", () => setResponsiveNavVisible(false));
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // Empêche le comportement de défilement par défaut
+
+        const href = link.getAttribute("href");
+        if (href) {
+          const targetId = href.replace("/#", ""); // Récupère l'id sans '/#'
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            const offset = 135; // Décalage de 20px
+            const elementPosition = targetElement.offsetTop;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+              top: offsetPosition,
+            });
+          }
+        }
+
+        setResponsiveNavVisible(false);
+      });
     });
+
     const nav = document.querySelector(".nav-items");
     nav?.addEventListener("click", (e) => {
       e.stopPropagation();
     });
+
     const html = document.querySelector("html");
-    html?.addEventListener("click", (e) => {
+    html?.addEventListener("click", () => {
       setResponsiveNavVisible(false);
     });
   }, []);
@@ -50,7 +74,6 @@ function Navbar() {
       main?.classList.remove("blur");
     }
   }, [responsiveNavVisible]);
-
   return (
     <nav>
       <div className={`wrapper ${navbarVisible ? "blur-nav" : ""}`}>
