@@ -32,8 +32,7 @@ function Experience() {
       start: "May 2023",
       end: "May 2023",
       shortDescription: [
-        "As a freelance developer, I had the opportunity to work on a project for Abbi Tech, a company that assists its clients in digitizing their business and provides a wide range of services to cover various support functions.",
-        "Throughout my work, I've utilized various MERN stack technologies, including React,  TypeScript and Node.js",
+        "As a freelance developer, I had the opportunity to work on a project for MBen Dev, a company that assists its clients in digitizing their business and provides a wide range of services to cover various support functions.",
         "It enabled me to contribute to the digital transformation of a business and witness firsthand the positive impact of technology in optimizing operations.",
       ],
     },
