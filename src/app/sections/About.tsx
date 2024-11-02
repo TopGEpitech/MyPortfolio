@@ -54,7 +54,7 @@ function About() {
             while continuously refining the quality of the solutions I develop.
           </p>
           <p className="about-grid-info-text">
-            Principal things I’ve learned throught my studies :
+            Core knowledge gained throught my studies :
           </p>
           <ul className="about-grid-info-list">
             <li className="about-grid-info-list-item">Next.js</li>
@@ -71,13 +71,30 @@ function About() {
             <li className="about-grid-info-list-item">GitHub</li>
             <li className="about-grid-info-list-item">Angular.js</li>
             <li className="about-grid-info-list-item">Python</li>
-            <li className="about-grid-info-list-item">GitLab</li>
+            <li className="about-grid-info-list-item">GitHub</li>
             <li className="about-grid-info-list-item">TypeScript</li>
             <li className="about-grid-info-list-item">Dart</li>
             <li className="about-grid-info-list-item">Docker</li>
             <li className="about-grid-info-list-item">JavaScript</li>
             <li className="about-grid-info-list-item">Java</li>
+            <li className="about-grid-info-list-item">Cloud</li>
           </ul>{" "}
+          <p className="about-grid-info-text">
+Softs skills :          </p>
+          <ul className="about-grid-info-list">
+            <li className="about-grid-info-list-item">Presentation</li>
+
+              <li className="about-grid-info-list-item">Planning</li>
+              <li className="about-grid-info-list-item">Analytical Thinking</li>
+              <li className="about-grid-info-list-item">Problem-Solving</li>
+            <li className="about-grid-info-list-item">Self-Learning</li>
+            <li className="about-grid-info-list-item">Attention to Quality</li>
+              <li className="about-grid-info-list-item">Detail-Oriented</li>
+              <li className="about-grid-info-list-item">Adaptability</li>
+            <li className="about-grid-info-list-item">Project Management</li>
+
+          </ul>{" "}
+
         </div>
         <div className="about-grid-photo">
           <div className="overlay"></div>
