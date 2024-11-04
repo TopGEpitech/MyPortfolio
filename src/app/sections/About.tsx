@@ -80,7 +80,7 @@ function About() {
             <li className="about-grid-info-list-item">Cloud</li>
           </ul>{" "}
           <p className="about-grid-info-text">
-Softs skills :          </p>
+Soft skills :          </p>
           <ul className="about-grid-info-list">
             <li className="about-grid-info-list-item">Presentation</li>
 
