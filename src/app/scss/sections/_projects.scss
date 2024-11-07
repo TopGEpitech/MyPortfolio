@@ -3,6 +3,7 @@
   .title {
     font-family: var(--raleway);
     color: var(--lightest-slate);
+
     position: relative;
     h2 {
       margin-bottom: 2rem;
@@ -79,6 +80,9 @@
           font-family: var(--fira-code);
         }
         &-title {
+          text-shadow: 2px 2px 0px black,
+          4px 4px 0px rgba(0, 0, 0, 0.5);
+          -webkit-text-stroke: 0.5px #25416b;
           width: max-content;
           color: var(--lightest-slate);
           font-size: var(--txlarge);

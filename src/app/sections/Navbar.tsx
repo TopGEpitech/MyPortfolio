@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 function Navbar() {
   const [navbarVisible, setNavbarVisible] = useState(false);
   const [responsiveNavVisible, setResponsiveNavVisible] = useState(false);
@@ -137,6 +138,22 @@ function Navbar() {
               </motion.li>
             ))}
           </ul>
+          <Link href="/fr" className="flag-icon">
+            <Image
+                src="/fr-flag.png"
+                alt="French Flag"
+                width={24}
+                height={24}
+            />
+          </Link>
+          <Link href="/" className="flag-icon">
+            <Image
+                src="/uk-flag.png"
+                alt="UK Flag"
+                width={24}
+                height={24}
+            />
+          </Link>
           <motion.div
             className="nav-items-button"
             initial={{ opacity: 0, y: -25 }}
