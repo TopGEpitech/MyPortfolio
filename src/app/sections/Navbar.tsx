@@ -164,7 +164,7 @@ function Navbar() {
               delay: 0.6,
             }}
           >
-            <Button text="Get my CV" link="/CVYounesKad.pdf" />
+            <Button text="Get my CV" link="/English_YounesKad.pdf" />
           </motion.div>
         </div>
       </div>
