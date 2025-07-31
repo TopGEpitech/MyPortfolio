@@ -80,7 +80,7 @@ function Navbar() {
           </motion.div>
 
           <Button
-              text="🚀 GET PROJECT ESTIMATE IN 24H 🚀"
+              text="🚀PROJECT ESTIMATE IN 24H 🚀"
               link="#contact"
               p="neon"
               textColor="#d0e0ff"
