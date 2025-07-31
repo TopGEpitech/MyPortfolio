@@ -21,7 +21,7 @@ function ContactFR() {
         <h2 className="contact-title">Et Après ?</h2>
         <h2 className="contact-sub-title">Contact</h2>
           <p className="contact-text">
-              Transformez votre présence en ligne avec des sites web perfomormant.
+              Transformez votre présence en ligne avec des sites web performants.
               Bénéficiez d’une expérience digitale unique, pensée pour engager.
               Parlons de votre projet —  Je vous réponds sous 24h !<br/>
               Rapide – tarifs équitables – qualité garantie.<br/>
