@@ -13,6 +13,7 @@ function NavbarFR() {
     const [navbarVisible, setNavbarVisible] = useState(false);
     const [responsiveNavVisible, setResponsiveNavVisible] = useState(false);
     const sectionLinks = [
+        { name: "Créations", link: "/portfolio" },
         { name: "À propos", link: "/#about" },
         { name: "Experience", link: "/#experience" },
         { name: "Réalisations", link: "/#work" },
@@ -29,30 +30,36 @@ function NavbarFR() {
     }, []);
 
     useEffect(() => {
-        const links = document.querySelectorAll(".nav-items-list-item-link");
+        const links = document.querySelectorAll<HTMLAnchorElement>(
+            ".nav-items-list-item-link"
+        );
         links.forEach((link) => {
             link.addEventListener("click", (e) => {
-                e.preventDefault();
-                const href = link.getAttribute("href");
-                if (href) {
-                    const targetId = href.replace("/#", "");
+                const href = link.getAttribute("href")!;
+                // Si le lien contient un "#", c'est un scroll interne
+                if (href.includes("#")) {
+                    e.preventDefault();
+                    const targetId = href.split("#")[1];
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
                         const offset = 135;
                         const elementPosition = targetElement.offsetTop;
                         const offsetPosition = elementPosition - offset;
-                        window.scrollTo({ top: offsetPosition });
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     }
                 }
+                // ferme toujours le menu responsive
                 setResponsiveNavVisible(false);
             });
         });
+        // empêche le clic dans le menu de remonter vers <html>
         const nav = document.querySelector(".nav-items");
         nav?.addEventListener("click", (e) => e.stopPropagation());
-        const html = document.querySelector("html");
-        html?.addEventListener("click", () => setResponsiveNavVisible(false));
+        // clic ailleurs ferme le menu
+        document.documentElement.addEventListener("click", () =>
+            setResponsiveNavVisible(false)
+        );
     }, []);
-
     useEffect(() => {
         const main = document.querySelector("main");
         if (responsiveNavVisible) main?.classList.add("blur");
@@ -99,8 +106,11 @@ function NavbarFR() {
                                 className="nav-items-list-item"
                                 initial={{ opacity: 0, y: -25 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, ease: "easeInOut", delay: 0.3 + index * 0.1 }}
-                            >
+                                transition={{
+                                    duration: 0.3,
+                                    ease: "easeInOut",
+                                    delay: index * 0.1,
+                                }} >
                                 <Link href={link} className="nav-items-list-item-link">
                                     {name}
                                 </Link>

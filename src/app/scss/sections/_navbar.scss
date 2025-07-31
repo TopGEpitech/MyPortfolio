@@ -48,7 +48,7 @@ nav {
       font-family: var(--fira-code);
       font-weight: 500;
       font-size: var(--tsm1);
-      counter-reset: nav-list;
+      counter-reset: nav-list -1;
       &-list {
         display: flex;
         gap: 3rem;

@@ -2,8 +2,11 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import Navbar from "@/app/sections/Navbar"
+import { ChevronLeft, ChevronRight, ExternalLink, Eye } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 interface Project {
     id: string
@@ -11,33 +14,44 @@ interface Project {
     preview: string
     url: string
     description: string
+    status?: string
 }
 
 function JuicyCarousel() {
     const images = Array.from({ length: 6 }, (_, i) => `/portfolio/juicy-lucy/image${i + 1}.png`)
     const [current, setCurrent] = useState(0)
+
     const prev = () => setCurrent((current + images.length - 1) % images.length)
     const next = () => setCurrent((current + 1) % images.length)
 
     return (
-        <div className="relative w-full aspect-video overflow-hidden rounded-lg">
+        <div className="relative w-full aspect-video overflow-hidden rounded-lg group">
             <Image
-                src={images[current]}
+                src={images[current] || "/placeholder.svg"}
                 alt={`Juicy Lucy ${current + 1}`}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
+            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <Eye className="w-8 h-8 text-white" />
+            </div>
             <button
-                onClick={prev}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white"
+                onClick={(e) => {
+                    e.stopPropagation()
+                    prev()
+                }}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-all duration-300"
             >
-                <ChevronLeft size={24} />
+                <ChevronLeft size={20} />
             </button>
             <button
-                onClick={next}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 rounded-full text-white"
+                onClick={(e) => {
+                    e.stopPropagation()
+                    next()
+                }}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-all duration-300"
             >
-                <ChevronRight size={24} />
+                <ChevronRight size={20} />
             </button>
         </div>
     )
@@ -49,22 +63,25 @@ export default function Component() {
             id: "1",
             name: "Juicy Lucy Club Pattaya",
             preview: "/portfolio/juicy-lucy/image1.jpg",
-            url: "#",
+            url: "https://juicylucy-pattaya-b6sd-git-main-topgepitechs-projects.vercel.app/",
             description: "A mouth-watering burger packed with cheese and flavor.",
+            status: "Live",
         },
         {
             id: "2",
-            name: "Task Management App",
-            preview: "/task-management-dashboard-preview.png",
-            url: "#",
-            description: "Organize your tasks and boost productivity with this intuitive app.",
+            name: "Projet CTRL Belgium",
+            preview: "/portfolio/projet_ctrl.png",
+            url: "https://projet-ctrlkdev-285vcnm3x-topgdev-4465s-projects.vercel.app/",
+            description: "A Belgian collective organizing techno events across the country.",
+            status: "Live",
         },
         {
             id: "3",
-            name: "Portfolio Website",
-            preview: "/portfolio-website-preview.png",
-            url: "#",
-            description: "A personal showcase of projects and skills, built with Next.js.",
+            name: "AMAC 68 France",
+            preview: "/portfolio/AMAC.png",
+            url: "https://amac68-9r83.vercel.app/",
+            description: "AMAC is an association empowers individuals by fostering skill development",
+            status: "Live",
         },
     ])
 
@@ -74,57 +91,74 @@ export default function Component() {
 
     return (
         <div className="min-h-screen portfolio-animated-bg">
-            <div className="portfolio-nav-sticky">
-                <Navbar />
-            </div>
-
             <main className="container mx-auto px-6 py-16">
+                <Link href="/">
+                    <Button variant="outline" className="mb-8 bg-blue-600/20 border-blue-400 text-blue-300 hover:bg-blue-600/30">
+                        🏠 BACK HOME
+                    </Button>
+                </Link>
+
                 <div className="text-center mb-20">
-                    <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
-                        Portfolio
-                    </h1>
-                    <h2 className="text-3xl md:text-4xl font-light text-slate-300 mb-8 tracking-wide">
-                        ผลงาน
-                    </h2>
+                    <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">Portfolio</h1>
+                    <h2 className="text-3xl md:text-4xl font-light text-slate-300 mb-8 tracking-wide">Working in Progress..</h2>
                     <div className="w-24 h-1 bg-blue-400 mx-auto" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     {projects.map((project, i) => (
-                        <div
+                        <Card
                             key={project.id}
-                            className="group cursor-pointer portfolio-project-card"
+                            className="group cursor-pointer bg-slate-800/60 backdrop-blur-md border-slate-700/50 hover:border-blue-400/70 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
                             onClick={() => handleProjectClick(project.url)}
                         >
-                            <div className="relative overflow-hidden rounded-xl p-6 transition-all duration-500 ease-in-out transform hover:scale-105">
-                                <div className="absolute inset-0 bg-slate-800/60 backdrop-blur-md border border-slate-700/50 rounded-xl group-hover:border-blue-400/70 transition-all duration-300" />
-                                <div className="absolute inset-0 rounded-xl portfolio-project-card-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <CardHeader className="p-6 pb-4">
+                                <div className="flex items-center justify-between mb-4">
+                                    <Badge variant="secondary" className="bg-green-600/20 text-green-400 border-green-500/30">
+                                        {project.status}
+                                    </Badge>
+                                    <ExternalLink className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
+                                </div>
 
-                                {/* Carousel on first project, static image otherwise */}
+                                {/* Image avec overlay au hover */}
                                 {i === 0 ? (
                                     <JuicyCarousel />
                                 ) : (
-                                    <div className="relative aspect-video mb-6 rounded-lg overflow-hidden z-10 border border-slate-700/30 group-hover:border-blue-500/50 transition-colors duration-300">
+                                    <div className="relative aspect-video rounded-lg overflow-hidden group/image">
                                         <Image
-                                            src={project.preview}
+                                            src={project.preview || "/placeholder.svg"}
                                             alt={`${project.name} preview`}
-                                            width={800}
-                                            height={450}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-105"
                                         />
+                                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                            <Eye className="w-8 h-8 text-white" />
+                                        </div>
                                     </div>
                                 )}
+                            </CardHeader>
 
-                                <div className="relative z-10 text-center">
-                                    <h3 className="text-xl font-semibold text-white group-hover:text-blue-300 transition-colors duration-300 mb-2">
-                                        {project.name}
-                                    </h3>
-                                    <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors duration-300 line-clamp-2 px-2">
-                                        {project.description}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                            <CardContent className="p-6 pt-2">
+                                <CardTitle className="text-xl text-white group-hover:text-blue-300 transition-colors duration-300 mb-3">
+                                    {project.name}
+                                </CardTitle>
+                                <CardDescription className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300 mb-4">
+                                    {project.description}
+                                </CardDescription>
+
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="w-full bg-blue-600/20 border-blue-400/50 text-blue-300 hover:bg-blue-600/30 hover:border-blue-400 transition-all duration-300"
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleProjectClick(project.url)
+                                    }}
+                                >
+                                    <ExternalLink className="w-4 h-4 mr-2" />
+                                    Check the project
+                                </Button>
+                            </CardContent>
+                        </Card>
                     ))}
                 </div>
             </main>
