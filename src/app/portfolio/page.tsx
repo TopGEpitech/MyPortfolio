@@ -83,6 +83,31 @@ export default function Component() {
             description: "AMAC is an association empowers individuals by fostering skill development",
             status: "Live",
         },
+        {
+            id: "4",
+            name: "Ma Prime France",
+            preview: "/portfolio/primefrance.png",
+            url: "https://maprimefrance.fr/",
+            description: "Lead Generator & Form. Optimized CEO/ Google Ads",
+            status: "Live",
+        },
+        {
+            id: "7",
+            name: "Your project here! ",
+            preview: "/portfolio/img_2.png",
+            url: "https://wa.me/+32486188501",
+            description: "Let in touch to learn more.",
+            status: "Waiting for you"
+        },
+        {
+            id: "7",
+            name: "Contact me right now !",
+            preview: "/portfolio/imgx.png",
+            url: "https://wa.me/+32486188501",
+            description: "Let in touch to learn more.",
+            status: "Waiting for you"
+        },
+
     ])
 
     const handleProjectClick = (url: string) => {
@@ -116,7 +141,7 @@ export default function Component() {
                                     <Badge variant="secondary" className="bg-green-600/20 text-green-400 border-green-500/30">
                                         {project.status}
                                     </Badge>
-                                    <ExternalLink className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
+                                    <ExternalLink target="_blank" className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
                                 </div>
 
                                 {/* Image avec overlay au hover */}
@@ -154,7 +179,7 @@ export default function Component() {
                                         handleProjectClick(project.url)
                                     }}
                                 >
-                                    <ExternalLink className="w-4 h-4 mr-2" />
+                                    <ExternalLink className="w-4 h-4 mr-2" target={"_blank"}/>
                                     Check the project
                                 </Button>
                             </CardContent>
