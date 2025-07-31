@@ -16,7 +16,7 @@ function HeroFR() {
                     delay: 0.6,
                 }}
             >
-                Bonjour, je m'appelle
+                Bonjour, je m’appelle
             </motion.h1>
             <motion.h2
                 className="hero-title-large"
@@ -40,7 +40,7 @@ function HeroFR() {
                     delay: 1.05,
                 }}
             >
-                Développeur FullStack.
+                Développeur Fullstack.
             </motion.h3>
             <motion.p
                 className="hero-text"
@@ -52,12 +52,12 @@ function HeroFR() {
                     delay: 1.35,
                 }}
             >
-                Passionné par l'application de mes connaissances pour créer des solutions numériques innovantes,
-                je suis dédié à un apprentissage et une croissance continus. Mon objectif est de devenir un
-                développeur Fullstack compétent et accompli à travers les projets que j'ai réalisés durant mon
-                passage à {' '}
-                <Link href="https://epitech.eu" target="_blank" className="link">
-                    EPITECH.
+                Développeur Fullstack passionné, je m’engage à sublimer vos projets
+                grâce à ma créativité et mon expertise.
+                Donnez vie à vos idées avec des solutions innovantes et sur-mesure.
+                <br />
+                <Link href="#contact" className="link">
+                    Parlons de votre projet →
                 </Link>
             </motion.p>
             <motion.div
@@ -70,6 +70,7 @@ function HeroFR() {
                     delay: 1.65,
                 }}
             >
+                {/* Placez ici votre <Button … /> si besoin */}
             </motion.div>
         </div>
     );

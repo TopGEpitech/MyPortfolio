@@ -51,11 +51,11 @@ function Hero() {
           delay: 1.35,
         }}
       >
-          Passionate about applying my knowledge to create innovative digital solutions,
-          I am dedicated to continuous learning and growth. My goal is to become a skilled and accomplished Fullstack Developer through the projects I worked on during my time
-          at {' '}
-        <Link href="https://epitech.eu" target="_blank" className="link"> EPITECH.
-        </Link>
+          As a passionate Fullstack Developer, I’m committed to elevating your projects with creativity and expertise.
+          Bring your ideas to life with innovative, tailor-made solutions. <br></br>
+          <Link href="#contact"  className="link">
+              Let’s discuss your vision →
+          </Link>
       </motion.p>
       <motion.div
         className="hero-button"

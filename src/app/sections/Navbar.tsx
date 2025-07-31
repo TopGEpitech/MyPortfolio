@@ -91,6 +91,14 @@ function Navbar() {
             <Logo />
           </Link>
         </motion.div>
+        <div>
+          <Button
+              text=" 🚀 PROJECT ESTIMATE IN 24H 🚀"
+              link="#contact"
+              p="neon"
+              textColor="#d0e0ff"
+          />
+        </div>
         <motion.div
           className="nav-responsive-toggle"
           initial={{ opacity: 0, y: 5 }}

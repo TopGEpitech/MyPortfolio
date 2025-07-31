@@ -1,13 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 :root {
   --navy-shadow: rgba(2, 12, 27, 0.7);
   --background-color: #0d2743; /* Bleu plus clair pour le fond */
   --lightest-navy: #2a4163; /* Bleu plus clair pour lightest-navy */
   --light-navy: #15325a; /* Bleu plus clair pour light-navy */
   --dark-slate: #5a6b8a; /* Slate un peu plus clair */
-  --slate: #a0aecd; /* Slate encore plus clair */
+  --slate: #d0e0ff; /* Slate encore plus clair */
   --light-slate: #d0e0ff; /* Bleu clair pour light-slate */
   --lightest-slate: #b8c9e6; /* Bleu très clair pour lightest-slate */
   --theme-color: #0066ff; /* Bleu plus vif pour la couleur principale */
+}
+@layer base {
+  body {
+    @apply bg-slate-900 text-slate-50;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", sans-serif;
+  }
+}
+
+@layer components {
+  .portfolio-animated-bg {
+    background: linear-gradient(-45deg, #08223f, #0a2a4e, #0c305a, #08223f);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+  }
+
+  @keyframes gradientAnimation {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .portfolio-nav-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    background-color: rgba(15, 23, 42, 0.5);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+  }
+
+  .portfolio-project-card {
+    /* any base card styles */
+  }
+
+  .portfolio-project-card-glow {
+    background: radial-gradient(
+            circle at center,
+            rgba(59, 130, 246, 0.15) 0%,
+            rgba(59, 130, 246, 0) 70%
+    );
+    pointer-events: none;
+  }
+
+  .portfolio-project-card-empty {
+    /* coming soon slot overrides */
+  }
 }
 
 ::-moz-selection {
@@ -60,4 +113,41 @@ html {
   background-color: var(--dark-slate);
   border: 3px solid var(--background-color);
   border-radius: 10px;
+}
+
+.neon-badge {
+  display: inline-block;
+  margin-left: 1rem;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid #0066ff;
+  background-color: #a8eaf6;
+  border-radius: 4px;
+  color: #c000ff;
+  text-shadow: 0 0 5px rgba(20, 122, 255, 0.6), 0 0 10px #147aff, 0 0 20px #53c2f1;
+  font-weight: bold;
+}
+
+.btn-neon {
+  color: rgba(84, 180, 248, 0.68);
+  border: 2px solid #1428ff;
+  animation: neon-border 3s ease-in-out infinite alternate;
+}
+
+.btn-neon:hover {
+  animation-duration: 1.5s;
+}
+
+@keyframes neon-border {
+  0% {
+    box-shadow: 0 0 5px #147aff, 0 0 10px #7ca1ff;
+    border-color: #1428ff;
+  }
+  50% {
+    box-shadow: 0 0 20px #1428ff, 0 0 30px #6aa1f3;
+    border-color: #4691ff;
+  }
+  100% {
+    box-shadow: 0 0 5px #1428ff, 0 0 10px #0066ff;
+    border-color: #1428ff;
+  }
 }

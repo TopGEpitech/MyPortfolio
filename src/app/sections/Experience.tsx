@@ -13,7 +13,7 @@ function Experience() {
   }, [selected]);
 
   const expereinces = [
-    {
+    { 
       name: "FreeEnergie",
       role: "TypeScript & JavaScript - Developer",
       url: "https://www.linkedin.com/company/freeenergie",
