@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feuille de Route Détaillée CRM Isowatt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #28a745; /* Vert Isowatt */
+            --secondary-color: #007bff; /* Bleu pour les accents */
+            --text-color: #343a40;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #6c757d;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --accent-green: #d4edda; /* Light green for table headers */
+            --accent-blue: #e0f2f7; /* Light blue for table rows */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            font-weight: 700;
+            border-bottom: 3px solid var(--medium-gray);
+            padding-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            color: var(--secondary-color);
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: 600;
+            border-left: 6px solid var(--primary-color);
+            padding-left: 15px;
+            background-color: #eaf7ed;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 4px;
+        }
+        h3 {
+            color: var(--text-color);
+            margin-top: 30px;
+            margin-bottom: 18px;
+            font-size: 1.6em;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-left: 0;
+        }
+        ul li {
+            background: var(--light-gray);
+            margin-bottom: 12px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        ul li:hover {
+            background: var(--medium-gray);
+            border-left-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        ul li strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        .icon {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .note {
+            font-style: italic;
+            color: var(--dark-gray);
+            margin-top: 10px;
+            font-size: 0.95em;
+            padding: 10px 15px;
+            background-color: #f0f8ff;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 4px;
+        }
+        .feature-list {
+            margin-top: 10px;
+            margin-left: 25px;
+            list-style: disc;
+            color: var(--dark-gray);
+        }
+        .feature-list li {
+            background: none;
+            padding: 3px 0;
+            margin-bottom: 3px;
+            border-left: none;
+            font-size: 0.95em;
+            display: list-item;
+            gap: 0;
+        }
+        .feature-list li:hover {
+            background: none;
+            border-left: none;
+            transform: none;
+            box-shadow: none;
+        }
+        .sub-section {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+        }
+        .sub-section h4 {
+            font-size: 1.3em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Table Styles */
+        .cost-estimation {
+            margin-top: 60px;
+            border-top: 3px solid var(--primary-color);
+            padding-top: 30px;
+        }
+        .cost-estimation h2 {
+            text-align: center;
+            border-left: none;
+            background-color: transparent;
+            color: var(--primary-color);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners apply to children */
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        tbody tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        tbody tr:hover {
+            background-color: var(--medium-gray);
+        }
+        .month-row {
+            background-color: var(--accent-green) !important;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        .month-row td {
+            border-top: 2px solid var(--primary-color);
+            font-size: 1.1em;
+        }
+        .total-row {
+            background-color: var(--secondary-color) !important;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        .total-row td {
+            border-top: 2px solid #fff;
+        }
+        .total-rowxd{
+            background-color: orange;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        .sub-item {
+            padding-left: 30px;
+            font-style: italic;
+            color: var(--dark-gray);
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 20%;
+            max-width: 200px; /* Ensure it doesn't get too big */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Feuille de Route  🚀 <br>
+        <img class="logo" src="https://cofarming.info/wp-content/uploads/2025/02/LOGO-ISOWATT-AURALIANCE-Bleu-RVB-1024x302.png" alt="Logo Isowatt">
+    </h1>
+
+    <h2>🗓️ Courant Septembre</h2>
+    <h3>⚙️ Module Admin</h3>
+    <ul>
+        <li><span class="icon">🗄️</span> <strong>Mise en place d'une base de données robuste :</strong>
+            <ul class="feature-list">
+                <li>Conception du schéma de base de données pour les utilisateurs, rôles, régions, leads, projets et affaires.</li>
+                <li>Implémentation des tables et relations nécessaires (ex: PostgreSQL, MySQL).</li>
+                <li>Mise en place des index pour optimiser les performances des requêtes.</li>
+            </ul>
+        </li>
+        <li><span class="icon">📊</span> <strong>Dashboard Admin intuitif :</strong>
+            <ul class="feature-list">
+                <li>Interface de gestion des utilisateurs (création, modification, suppression).</li>
+                <li>Attribution et gestion des rôles (Admin, Commercial, Directeur d'agence).</li>
+                <li>Visualisation des statistiques globales (nombre de leads, affaires, utilisateurs actifs).</li>
+                <li>Interface pour changer les différents états disponibles dans Lead/Business (En cours, etc.).</li>
+            </ul>
+        </li>
+        <li><span class="icon">📍</span> <strong>Gestion et filtrage par région :</strong>
+            <ul class="feature-list">
+                <li>Création et modification des régions (LYON, OCCITANIE, BRETAGNE, etc.).</li>
+                <li>Attribution des utilisateurs et des leads/affaires à des régions spécifiques.</li>
+                <li>Fonctionnalité de filtrage par région des commerciaux pour les administrateurs et directeurs.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>👤 Module Leads (Prospect)</h3>
+    <div class="sub-section">
+        <h4>Vue d'ensemble des Leads</h4>
+        <ul>
+            <li><span class="icon">➕</span> <strong>Date d'ajout du Lead :</strong> Visible uniquement par les administrateurs pour le suivi interne.</li>
+            <li><span class="icon">✏️</span> <strong>Date de modification du Lead :</strong> Visible uniquement par les administrateurs pour l'audit et le suivi des mises à jour.</li>
+            <li><span class="icon">🔍</span> <strong>Filtrage et affichage avancé des prospects :</strong>
+                <ul class="feature-list">
+                    <li>Recherche par Nom / Prénom, Numéro de téléphone, Code Postal, Ville.</li>
+                    <li>Options de tri par date d'ajout, date de modification, nom.</li>
+                    <li>Pagination et chargement infini pour une meilleure performance.</li>
+                </ul>
+            </li>
+            <li><span class="icon">🏷️</span> <strong>État du prospect personnalisable :</strong>
+                <ul class="feature-list">
+                    <li>Gestion des statuts via le module Admin (ex: Prospect à attribuer, R1, Locataire, Hors critère, À Relancer, Converti, Perdu).</li>
+                    <li>Mise à jour rapide du statut depuis la vue d'ensemble.</li>
+                </ul>
+            </li>
+            <li><span class="icon">🌐</span> <strong>Source du lead personnalisable :</strong>
+                <ul class="feature-list">
+                    <li>Gestion des sources via le module Admin (ex: Digital Cover, Google Ads, Partenaire, Recommandation).</li>
+                    <li>Filtrage des leads par source.</li>
+                </ul>
+            </li>
+            <li><span class="icon">💬</span> <strong>Commentaires :</strong> Affichage du dernier commentaire en date pour un aperçu rapide.</li>
+        </ul>
+    </div>
+    <div class="sub-section">
+        <h4>Fiche détaillée d'un Prospect</h4>
+        <ul>
+            <li><span class="icon">ℹ️</span> <strong>Informations complètes du prospect :</strong> Toutes les données de contact, géographiques, et les champs éditables.</li>
+            <li><span class="icon">📁</span> <strong>Gestion des documents :</strong>
+                <ul class="feature-list">
+                    <li>Possibilité de créer des dossiers nominatifs pour organiser les documents.</li>
+                    <li>Upload, visualisation et téléchargement de documents (PDF, images, etc.) liés au prospect.</li>
+                </ul>
+            </li>
+            <li><span class="icon">🏗️</span> <strong>Informations du Projet du Client :</strong> Champs dédiés que le vendeur remplira (type de projet, besoins spécifiques, budget estimé, etc.).</li>
+            <li><span class="icon">📜</span> <strong>Historique des modifications :</strong> Journal détaillé de tous les changements apportés à la fiche du prospect (changement de statut, modification d'informations, ajout de commentaires).</li>
+        </ul>
+    </div>
+
+    <h2>🗓️ Octobre</h2>
+    <h3>📆 Module Agenda Lead / Business Agenda</h3>
+    <ul>
+        <li><span class="icon">➕</span> <strong>Prise de rendez-vous intégrée :</strong>
+            <ul class="feature-list">
+                <li>Interface intuitive pour planifier des rendez-vous avec les leads et les clients.</li>
+                <li>Notifications e-mails automatiques pour les rappels de rendez-vous.</li>
+            </ul>
+        </li>
+        <li><span class="icon">🔒</span> <strong>Système de blocage et de statuation des rendez-vous :</strong>
+            <ul class="feature-list">
+                <li>Un commercial ne pourra pas prendre de nouveau rendez-vous tant que le statut du rendez-vous précédent n'a pas été mis à jour.</li>
+                <li>Statuts de rendez-vous personnalisables (ex: Planifié, Réalisé, Annulé, Reporté, Non Présent).</li>
+                <li>Alertes visuelles pour les rendez-vous en attente de statuation.</li>
+            </ul>
+        </li>
+        <li><span class="icon">👥</span> <strong>Vue d'équipe pour les directeurs d'agence :</strong>
+            <ul class="feature-list">
+                <li>Chaque directeur pourra visualiser l'agenda complet de son équipe.</li>
+                <li>Filtrage des rendez-vous par commercial, statut, date.</li>
+                <li>Tableau de bord des performances de rendez-vous par équipe.</li>
+            </ul>
+        </li>
+    </ul>
+    <h3>💼 Module Affaires</h3>
+    <p class="note">Ce module sera principalement développé en Novembre, mais les bases de données et les liens avec les Leads seront établis en Octobre.</p>
+
+    <h2>🗓️ Novembre</h2>
+    <h3>💰 Module Affaires (Signé)</h3>
+    <div class="sub-section">
+        <h4>Vue d'ensemble des Affaires</h4>
+        <ul>
+            <li><span class="icon">📈</span> <strong>État personnalisable global de l'affaire :</strong>
+                <ul class="feature-list">
+                    <li>Gestion des statuts via le module Admin (ex: VT EN COURS, Facturé, Signé, En Attente, Clôturé).</li>
+                    <li>Vue d'ensemble des affaires par statut avec des indicateurs visuels.</li>
+                </ul>
+            </li>
+            <li><span class="icon">💸</span> <strong>État des Paiements personnalisable :</strong>
+                <ul class="feature-list">
+                    <li>Gestion des statuts de paiement via le module Admin (ex: Facturé, Attente de Financement, Payé, Retard de Paiement).</li>
+                    <li>Suivi financier rapide des affaires.</li>
+                </ul>
+            </li>
+            <li><span class="icon">🤝</span> <strong>Intervenants :</strong> Possibilité d'associer plusieurs intervenants (commerciaux, techniciens, partenaires) à une affaire.</li>
+            <li><span class="icon">📝</span> <strong>Commentaires :</strong> Section dédiée aux commentaires spécifiques à l'affaire.</li>
+        </ul>
+    </div>
+    <div class="sub-section">
+        <h4>Page d'un seul Business (Affaire détaillée)</h4>
+        <ul>
+            <li><span class="icon">🔄</span> <strong>Conversion Lead vers Business :</strong>
+                <ul class="feature-list">
+                    <li>Fonctionnalité pour transformer un Lead qualifié en Affaire.</li>
+                    <li>Exigence d'ajout d'un BDC (Bon de Commande) en document pour valider la conversion.</li>
+                    <li>Transfert automatique des informations du Lead vers l'Affaire.</li>
+                </ul>
+            </li>
+            <li><span class="icon">👤</span> <strong>Informations détaillées du client :</strong> Accès rapide aux coordonnées complètes du client lié à l'affaire.</li>
+            <li><span class="icon">💬</span> <strong>Commentaires :</strong> Historique complet des commentaires liés à cette affaire.</li>
+            <li><span class="icon">📂</span> <strong>Upload de fichiers avec dossier nominatif :</strong> Comme pour les leads, gestion avancée des documents spécifiques à l'affaire (contrats, devis, photos de chantier, etc.).</li>
+            <li><span class="icon">✍️</span> <strong>Édition des états/statuts/informations :</strong> Interface pour modifier facilement tous les champs personnalisables et les informations de l'affaire.</li>
+        </ul>
+    </div>
+
+    <div class="cost-estimation">
+        <h2>💰 Estimation des Coûts de Développement</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Mois</th>
+                <th>Module / Fonctionnalité</th>
+                <th>Jours</th>
+                <th>Coût (€)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- SEPTEMBRE – 💼 Module Admin + Leads -->
+            <tr class="month-row">
+                <td>Septembre</td>
+                <td>💼 Module Admin</td>
+                <td>13</td>
+                <td>4 875 €</td>
+            </tr>
+            <tr><td></td><td class="sub-item">🗄️ Conception schéma DB</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">🔗 Implémentation tables & indexation</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">👤 CRUD utilisateurs</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">🎨 UI gestion rôles & permissions</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">📊 Statistiques globales</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">⚙️ États Lead/Business</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">📍 Gestion & filtres par région</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">🧪 Tests & QA Admin</td><td>2</td><td>750 €</td></tr>
+
+            <tr class="month-row">
+                <td>Septembre</td>
+                <td>👤 Module Leads</td>
+                <td>15</td>
+                <td>5 625 €</td>
+            </tr>
+            <tr><td></td><td class="sub-item">➕ Dates ajout/modif</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">🔍 Recherche / Filtres / Tri</td><td>3</td><td>1 125 €</td></tr>
+            <tr><td></td><td class="sub-item">📃 Pagination & infinite scroll</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">🏷️ États & sources personnalisables</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">💬 Aperçu dernier commentaire</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">📁 Fiche Prospect détaillée</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">📂 Documents + Upload</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">🏗️ Infos Projet Client</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">📜 Historique des modifications</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">🧪 Tests & QA Leads</td><td>2</td><td>750 €</td></tr>
+
+            <tr class="total-row">
+                <td colspan="2">📍 Total Septembre (Admin + Leads)</td>
+                <td>28</td>
+                <td>10 500 €</td>
+            </tr>
+
+            <!-- OCTOBRE – 📆 Agenda -->
+            <tr class="month-row">
+                <td>Octobre</td>
+                <td>📆 Module Agenda</td>
+                <td>14</td>
+                <td>5 250 €</td>
+            </tr>
+            <tr><td></td><td class="sub-item">➕ Prise de rendez-vous & notifications</td><td>4</td><td>1 500 €</td></tr>
+            <tr><td></td><td class="sub-item">⚙️ Blocage/statuts & alertes visuelles</td><td>3</td><td>1 125 €</td></tr>
+            <tr><td></td><td class="sub-item">👥 Vue d’équipe & filtres</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">🧪 QA & Tests Agenda</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">🔗 Liaison Leads → Affaires</td><td>3</td><td>1 125 €</td></tr>
+
+            <tr class="total-row">
+                <td colspan="2">📍 Total Octobre (Agenda)</td>
+                <td>14</td>
+                <td>5 250 €</td>
+            </tr>
+
+            <!-- NOVEMBRE – 💼 Module Affaires -->
+            <tr class="month-row">
+                <td>Novembre</td>
+                <td>💼 Module Affaires</td>
+                <td>16</td>
+                <td>5 250 €</td>
+            </tr>
+            <tr><td></td><td class="sub-item">📊 Vue d’ensemble & indicateurs</td><td>3</td><td>1 125 €</td></tr>
+            <tr><td></td><td class="sub-item">🎛️ États & paiements personnalisables</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">🤝 Intervenants / associations</td><td>1.5</td><td>562.5 €</td></tr>
+            <tr><td></td><td class="sub-item">📝 Commentaires & documents</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">🔄 Conversion Lead→Business & BDC</td><td>2</td><td>750 €</td></tr>
+            <tr><td></td><td class="sub-item">👤 Infos client détaillées</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">📂 Upload & dossiers nominatif</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">✍️ Édition des champs & statuts</td><td>1</td><td>375 €</td></tr>
+            <tr><td></td><td class="sub-item">🚀 QA & déploiement</td><td>2.5</td><td>937.5 €</td></tr>
+
+            <tr class="total-row">
+                <td colspan="2">📍 Total Novembre (Affaires)</td>
+                <td>16</td>
+                <td>5 250 €</td>
+            </tr>
+
+            <!-- TOTAL GLOBAL -->
+            <tr class="total-row">
+                <td colspan="2">✅ Total Global</td>
+                <td>58</td>
+                <td>21 000 €</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
