@@ -64,7 +64,7 @@ export default function Component() {
             name: "Juicy Lucy Club Pattaya",
             preview: "/portfolio/juicy-lucy/image1.jpg",
             url: "https://juicylucy-pattaya-b6sd-git-main-topgepitechs-projects.vercel.app/",
-            description: "A mouth-watering burger packed with cheese and flavor.",
+            description: "A lovely Bar in Pattaya that asked me to show them a preview of their website",
             status: "Live",
         },
         {
@@ -93,18 +93,18 @@ export default function Component() {
         },
         {
             id: "7",
-            name: "Your project here! ",
-            preview: "/portfolio/img_2.png",
-            url: "https://wa.me/+32486188501",
-            description: "Let in touch to learn more.",
-            status: "Waiting for you"
+            name: "BADABING - Pattaya",
+            preview: "/portfolio/badabing.png",
+            url: "https://v0-badabing-design.vercel.app/",
+            description: "A lovely Bar in Pattaya that asked me to show them a preview of their website",
+            status: "Live",
         },
         {
             id: "7",
             name: "Contact me right now !",
             preview: "/portfolio/imgx.png",
             url: "https://wa.me/+32486188501",
-            description: "Let in touch to learn more.",
+            description: "Your project here",
             status: "Waiting for you"
         },
 
