@@ -139,7 +139,6 @@ export default function ProjectWizard() {
     plansToBuyEV: "",
     // </CHANGE>
     heatingEnergySource: "",
-    heatingType: "", // This was already present, but re-declared for clarity from updates
     heatingBrand: "",
     heatedSurface: "",
     comfortTemperature: 21,
