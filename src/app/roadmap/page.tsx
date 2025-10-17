@@ -291,7 +291,7 @@ export default function RoadmapPage() {
                                     <p className="text-xs text-slate-300">1er Janvier 2026</p>
                                 </div>
                                 <Button asChild className="w-full bg-blue-700 hover:bg-secondary/90" size="lg">
-                                    <Link href="/devis/crm">
+                                    <Link href="/devis/parcoursvente">
                                         Voir le devis complet
                                         <ArrowRight className="ml-2 w-5 h-5" />
                                     </Link>
