@@ -1,0 +1,164 @@
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --background-color: #0a0a0f;
+  --foreground-color: #f8f9fa;
+  --card-color: #16161f;
+  --card-foreground-color: #f8f9fa;
+  --popover-color: #1a1a24;
+  --popover-foreground-color: #f8f9fa;
+  --primary-color: #10b981;
+  --primary-foreground-color: #ffffff;
+  --secondary-color: #6366f1;
+  --secondary-foreground-color: #ffffff;
+  --muted-color: #27273a;
+  --muted-foreground-color: #9ca3af;
+  --accent-color: #34d399;
+  --accent-foreground-color: #ffffff;
+  --destructive-color: #ef4444;
+  --destructive-foreground-color: #ffffff;
+  --border-color: #27273a;
+  --input-color: #27273a;
+  --ring-color: #10b981;
+}
+
+.proposals-wrapper {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 142 71% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 237 75% 67%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 142 69% 58%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 142 71% 45%;
+  --radius: 0.625rem;
+}
+
+.proposals-wrapper * {
+  border-color: hsl(var(--border));
+}
+
+.proposals-wrapper {
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  font-family: var(--font-sans);
+}
+
+/* Force card colors */
+.proposals-wrapper .bg-card {
+  background-color: var(--card-color) !important;
+}
+
+.proposals-wrapper .text-card-foreground {
+  color: var(--card-foreground-color) !important;
+}
+
+.proposals-wrapper .bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.proposals-wrapper .text-primary {
+  color: var(--primary-color) !important;
+}
+
+.proposals-wrapper .text-primary-foreground {
+  color: var(--primary-foreground-color) !important;
+}
+
+.proposals-wrapper .bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.proposals-wrapper .text-secondary-foreground {
+  color: var(--secondary-foreground-color) !important;
+}
+
+.proposals-wrapper .text-muted-foreground {
+  color: var(--muted-foreground-color) !important;
+}
+
+.proposals-wrapper .bg-background {
+  background-color: var(--background-color) !important;
+}
+
+.proposals-wrapper .text-foreground {
+  color: var(--foreground-color) !important;
+}
+
+/* Module colors */
+.proposals-wrapper .text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+.proposals-wrapper .text-purple-500 {
+  color: #a855f7 !important;
+}
+
+.proposals-wrapper .text-green-500 {
+  color: #22c55e !important;
+}
+
+.proposals-wrapper .text-red-500 {
+  color: #ef4444 !important;
+}
+
+.proposals-wrapper .text-orange-500 {
+  color: #f97316 !important;
+}
+
+.proposals-wrapper .text-yellow-500 {
+  color: #eab308 !important;
+}
+
+.proposals-wrapper .text-pink-500 {
+  color: #ec4899 !important;
+}
+
+/* Background colors for cards */
+.proposals-wrapper .bg-orange-500\/5 {
+  background-color: rgba(249, 115, 22, 0.05) !important;
+}
+
+.proposals-wrapper .bg-red-500\/5 {
+  background-color: rgba(239, 68, 68, 0.05) !important;
+}
+
+.proposals-wrapper .bg-yellow-500\/5 {
+  background-color: rgba(234, 179, 8, 0.05) !important;
+}
+
+/* Border colors */
+.proposals-wrapper .border-orange-500\/20 {
+  border-color: rgba(249, 115, 22, 0.2) !important;
+}
+
+.proposals-wrapper .border-red-500\/20 {
+  border-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.proposals-wrapper .border-yellow-500\/20 {
+  border-color: rgba(234, 179, 8, 0.2) !important;
+}
+
+/* Background colors for icon circles */
+.proposals-wrapper .bg-orange-500\/20 {
+  background-color: rgba(249, 115, 22, 0.2) !important;
+}
+
+.proposals-wrapper .bg-red-500\/20 {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.proposals-wrapper .bg-yellow-500\/20 {
+  background-color: rgba(234, 179, 8, 0.2) !important;
+}
