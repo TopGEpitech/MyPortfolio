@@ -13,51 +13,49 @@ function Experience() {
   }, [selected]);
 
   const expereinces = [
-    { 
-      name: "FreeEnergie",
-      role: "TypeScript & JavaScript - Developer",
+    {
+      name: "FREE ENERGIE",
+      role: "TypeScript & JavaScript Developer",
       url: "https://www.linkedin.com/company/freeenergie",
-      start: "Currently",
-      end: "1 year",
+      start: "Sep 2022",
+      end: "Present",
       shortDescription: [
-        "Currently leading the development of a CRM with Angular for the front-end and Node.js for the back-end, managing thousands of clients and employees. This platform optimizes internal management and provides an effective solution for various business needs.",
-        "Also developing a sales application in Next.js and AdonisJS, assisting sales representatives in client interactions. This app uses APIs to improve the efficiency and speed of sales processes.",
+        "Architecture and development of a CRM (Angular / Node.js) used by thousands of clients and collaborators.",
+        "Design and delivery of a Sales application (Next.js + AdonisJS) to accelerate business interactions and revenue.",
+        "CI/CD pipelines, feature flags, RBAC, secrets management, structured logs and observability dashboards.",
+        "Stack: Angular, React, RxJS, NgRx, Node.js, AdonisJS, MongoDB, Redis, KrakenD, Google Cloud, AWS, Docker.",
       ],
     },
-
+    {
+      name: "K-DEV Solutions",
+      role: "Chief Executive Officer",
+      url: "https://www.linkedin.com/in/younes-k-b2927b261/",
+      start: "Jul 2025",
+      end: "Present",
+      shortDescription: [
+        "Drive digital transformation for businesses by designing and building custom websites and applications to modernize operations.",
+      ],
+    },
     {
       name: "MBen Dev",
-      role: "Freelance Developer",
+      role: "FullStack Node.js & React.js Developer",
       url: "https://www.linkedin.com/company/abbi-tech/?trk=similar-pages",
-      start: "May 2023",
-      end: "May 2023",
+      start: "May 2022",
+      end: "Jun 2022",
       shortDescription: [
-        "As a freelance developer, I had the opportunity to work on a project for MBen Dev, a company that assists its clients in digitizing their business and provides a wide range of services to cover various support functions.",
-        "It enabled me to contribute to the digital transformation of a business and witness firsthand the positive impact of technology in optimizing operations.",
+        "Collaborated on digitalization projects using the MERN stack.",
+        "Built dynamic user interfaces with React and robust backends with Node.js.",
       ],
     },
     {
       name: "BlazingBoost",
-      role: "Coach E-sport",
+      role: "Esport Coach",
       url: "https://blazingboost.com/",
-      start: "September 2021",
-      end: "November 2023",
+      start: "Nov 2020",
+      end: "Nov 2022",
       shortDescription: [
-        "As a former Esports coach, I not only helped players enhance their confidence, determination, and physical fitness",
-        "but I also had the opportunity to interact with individuals from around the world, which allowed me to develop a strong command of the English language.",
-        "My objective was to provide technical advice to optimize their performance on the field.",
-      ],
-    },
-    {
-      name: "BAPE",
-      role: "Influencer",
-      url: "https://www.instagram.com/bape__france/",
-      start: "September 2018",
-      end: "August 2019",
-      shortDescription: [
-        "As an influencer for A BATHING APE France, I promoted collections and events with original content and my unique perspective. ",
-        "This experience helped me gain a better understanding of consumer expectations and effectively communicate with my online audience.",
-        "Overall, it was a rewarding experience that allowed me to develop my leadership skills while contributing positively to the growth of the organization.",
+        "Coached World of Warcraft players to unlock their full potential through strategic advice and performance optimization.",
+        "Helped players refine techniques, adopt winning tactics, and maximize in-game performance.",
       ],
     },
   ];
