@@ -135,7 +135,7 @@ function NavbarFR() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut", delay: 0.6 }}
                     >
-                        <Button text="Obtenez mon CV" link="/CVYounesKad.pdf" />
+                        <Button text="Obtenez mon CV" link="/cv" />
                     </motion.div>
                 </div>
             </div>
