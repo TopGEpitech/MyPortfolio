@@ -51,10 +51,10 @@ function Hero() {
           delay: 1.35,
         }}
       >
-          As a passionate Fullstack Developer, I’m committed to elevating your projects with creativity and expertise.
+          As a passionate Fullstack Developer, I'm committed to elevating your projects with creativity and expertise.
           Bring your ideas to life with innovative, tailor-made solutions. <br></br>
           <Link href="#contact"  className="link">
-              Let’s discuss your vision →
+              Let's discuss your vision →
           </Link>
       </motion.p>
       <motion.div

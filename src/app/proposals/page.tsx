@@ -65,11 +65,6 @@ export default function RoadmapPage() {
             ],
         },
         {
-            id: "transition",
-            title: "Pendant ce temps...",
-            subtitle: "Développement CRM en parallèle",
-        },
-        {
             id: "phase2",
             title: "Phase 2 : CRM en Abonnement",
             subtitle: "Disponible Mars 2026",
@@ -182,42 +177,42 @@ export default function RoadmapPage() {
             </div>
 
             {/* Navigation en haut à gauche */}
-            <div className="fixed top-4 left-4 z-50 flex gap-3">
+            <div className="fixed top-4 left-4 z-50 flex gap-2 md:gap-3">
                 <Link href="/parcoursvente">
-                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-2 font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
-                        <LayoutGrid className="w-5 h-5" />
-                        <span>Parcours</span>
+                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-2 py-2 md:px-4 md:py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-1 md:gap-2 text-xs md:text-base font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
+                        <LayoutGrid className="w-4 h-4 md:w-5 md:h-5" />
+                        <span className="hidden sm:inline">Parcours</span>
                     </button>
                 </Link>
                 <Link href="/roadmap">
-                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-2 font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
-                        <Map className="w-5 h-5" />
-                        <span>Comparatif</span>
+                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-2 py-2 md:px-4 md:py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-1 md:gap-2 text-xs md:text-base font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
+                        <Map className="w-4 h-4 md:w-5 md:h-5" />
+                        <span className="hidden sm:inline">Comparatif</span>
                     </button>
                 </Link>
                 <Link href="/isowattcrm">
-                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-2 font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
-                        <ExternalLink className="w-5 h-5" />
-                        <span>CRM</span>
+                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-2 py-2 md:px-4 md:py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-1 md:gap-2 text-xs md:text-base font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
+                        <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
+                        <span className="hidden sm:inline">CRM</span>
                     </button>
                 </Link>
             </div>
 
-            <div className="container mx-auto px-4 py-8 relative z-10">
-                <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="container mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8 relative z-10">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-4 mb-6 md:mb-8">
                     <Button
                         variant={selectedProposition === 1 ? "default" : "outline"}
                         onClick={() => switchProposition(1)}
-                        className="px-6"
+                        className="px-4 md:px-6 w-full sm:w-auto text-xs md:text-sm"
                     >
-                        Proposition 1 : Approche Progressive
+                        <span className="hidden sm:inline">Proposition 1 : </span>Approche Progressive
                     </Button>
                     <Button
                         variant={selectedProposition === 2 ? "default" : "outline"}
                         onClick={() => switchProposition(2)}
-                        className="px-6"
+                        className="px-4 md:px-6 w-full sm:w-auto text-xs md:text-sm"
                     >
-                        Proposition 2 : Développement Direct
+                        <span className="hidden sm:inline">Proposition 2 : </span>Développement Direct
                     </Button>
                 </div>
 
@@ -260,18 +255,18 @@ export default function RoadmapPage() {
                                         <Sparkles className="w-4 h-4" />
                                         Solution Innovante
                                     </div>
-                                    <h1 className="text-6xl md:text-7xl font-bold text-balance">
+                                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-balance">
                                         {currentStepData.title}
                                         <br />
                                         <span className="text-primary">{currentStepData.subtitle}</span>
                                     </h1>
-                                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+                                    <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty px-4">
                                         Une approche progressive pour transformer votre processus de vente
                                     </p>
-                                    <div className="pt-8">
-                                        <Button size="lg" onClick={nextStep} className="text-lg px-8 py-6 group">
+                                    <div className="pt-6 md:pt-8">
+                                        <Button size="lg" onClick={nextStep} className="text-sm md:text-base lg:text-lg px-6 md:px-8 py-4 md:py-6 group">
                                             Découvrir le parcours
-                                            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                            <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                                         </Button>
                                     </div>
                                 </div>
@@ -279,107 +274,64 @@ export default function RoadmapPage() {
 
                             {/* PHASE 1 STEP */}
                             {currentStepData.id === "phase1" && (
-                                <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-700">
+                                <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-right-4 duration-700">
                                     <div className="text-center space-y-4">
-                                        <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 border-2 border-primary/20">
-                                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
+                                        <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 rounded-full bg-primary/10 border-2 border-primary/20">
+                                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm md:text-base">
                                                 1
                                             </div>
                                             <div className="text-left">
-                                                <h2 className="text-3xl font-bold">{currentStepData.title}</h2>
-                                                <p className="text-sm text-muted-foreground">{currentStepData.subtitle}</p>
+                                                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">{currentStepData.title}</h2>
+                                                <p className="text-xs md:text-sm text-muted-foreground">{currentStepData.subtitle}</p>
                                             </div>
                                         </div>
-                                        <div className="inline-block px-4 py-2 rounded-full bg-primary text-primary-foreground font-bold">
+                                        <div className="inline-block px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-primary text-primary-foreground font-bold text-sm md:text-base">
                                             {currentStepData.duration}
                                         </div>
                                     </div>
 
-                                    <Card className="p-8 bg-card/50 backdrop-blur border-2 border-primary/20">
-                                        <h3 className="text-2xl font-bold mb-6 text-center">Fonctionnalités Incluses</h3>
-                                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    <Card className="p-4 md:p-6 lg:p-8 bg-card/50 backdrop-blur border-2 border-primary/20">
+                                        <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 md:mb-6 text-center">Fonctionnalités Incluses</h3>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                                             {currentStepData.features?.map((feature, idx) => (
                                                 <Card
                                                     key={idx}
-                                                    className={`p-6 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-primary/50 ${
+                                                    className={`p-4 md:p-6 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-primary/50 ${
                                                         zoomedFeature === feature.title
                                                             ? "scale-105 shadow-2xl border-primary ring-2 ring-primary"
                                                             : ""
                                                     }`}
                                                     onClick={() => setZoomedFeature(zoomedFeature === feature.title ? null : feature.title)}
                                                 >
-                                                    <feature.icon className="w-10 h-10 mb-3 text-primary" />
-                                                    <h4 className="font-bold mb-1">{feature.title}</h4>
-                                                    <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                                                    <feature.icon className="w-8 h-8 md:w-10 md:h-10 mb-2 md:mb-3 text-primary" />
+                                                    <h4 className="font-bold mb-1 text-sm md:text-base">{feature.title}</h4>
+                                                    <p className="text-xs md:text-sm text-muted-foreground">{feature.desc}</p>
                                                 </Card>
                                             ))}
                                         </div>
                                     </Card>
 
-                                    <Card className="p-6 bg-gradient-to-r from-green-500/20 to-primary/20 border-2 border-green-500/30">
-                                        <div className="flex items-center justify-center gap-4">
-                                            <div className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
-                                                <Check className="w-7 h-7 text-white" />
+                                    <Card className="p-4 md:p-6 bg-gradient-to-r from-green-500/20 to-primary/20 border-2 border-green-500/30">
+                                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
+                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500 flex items-center justify-center">
+                                                <Check className="w-6 h-6 md:w-7 md:h-7 text-white" />
                                             </div>
-                                            <div className="text-center">
-                                                <p className="text-2xl font-bold">Disponible dès le</p>
-                                                <p className="text-lg text-muted-foreground">
+                                            <div className="text-center sm:text-left">
+                                                <p className="text-lg md:text-xl lg:text-2xl font-bold">Disponible dès le</p>
+                                                <p className="text-base md:text-lg text-muted-foreground">
                                                     <span className="font-bold text-green-600">{currentStepData.availableDate}</span>
                                                 </p>
                                             </div>
                                         </div>
                                     </Card>
 
-                                    <div className="flex items-center justify-center gap-4 pt-4">
-                                        <Button variant="outline" onClick={prevStep}>
+                                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-4">
+                                        <Button variant="outline" onClick={prevStep} className="w-full sm:w-auto">
                                             Retour
                                         </Button>
-                                        <Button size="lg" onClick={nextStep} className="group">
+                                        <Button size="lg" onClick={nextStep} className="group w-full sm:w-auto">
                                             Et ensuite ?
-                                            <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                        </Button>
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* TRANSITION STEP */}
-                            {currentStepData.id === "transition" && (
-                                <div className="text-center space-y-8 animate-in fade-in zoom-in duration-700">
-                                    <div className="space-y-4">
-                                        <h2 className="text-5xl font-bold">{currentStepData.title}</h2>
-                                        <p className="text-2xl text-primary font-semibold">{currentStepData.subtitle}</p>
-                                    </div>
-
-                                    <div className="max-w-2xl mx-auto">
-                                        <Card className="p-8 bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-primary/30">
-                                            <div className="flex items-center justify-center mb-6">
-                                                <ArrowRight className="w-16 h-16 text-primary animate-pulse" />
-                                            </div>
-                                            <p className="text-lg text-muted-foreground mb-6">
-                                                Pendant que vous utilisez l'App Parcours de Vente, nous développons votre CRM complet
-                                            </p>
-                                            <div className="grid grid-cols-2 gap-4">
-                                                <div className="p-4 bg-background/50 rounded-lg">
-                                                    <TrendingUp className="w-8 h-8 text-green-500 mx-auto mb-2" />
-                                                    <p className="font-bold text-sm">Vous vendez</p>
-                                                    <p className="text-xs text-muted-foreground">ROI immédiat</p>
-                                                </div>
-                                                <div className="p-4 bg-background/50 rounded-lg">
-                                                    <Sparkles className="w-8 h-8 text-primary mx-auto mb-2" />
-                                                    <p className="font-bold text-sm">Nous développons</p>
-                                                    <p className="text-xs text-muted-foreground">CRM sur mesure</p>
-                                                </div>
-                                            </div>
-                                        </Card>
-                                    </div>
-
-                                    <div className="flex items-center justify-center gap-4 pt-4">
-                                        <Button variant="outline" onClick={prevStep}>
-                                            Retour
-                                        </Button>
-                                        <Button size="lg" onClick={nextStep} className="group">
-                                            Voir le CRM
-                                            <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                            <ChevronRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                                         </Button>
                                     </div>
                                 </div>
@@ -456,21 +408,21 @@ export default function RoadmapPage() {
                             {/* BENEFITS STEP */}
                             {currentStepData.id === "benefits" && (
                                 <div className="space-y-8 animate-in fade-in zoom-in duration-700">
-                                    <div className="text-center space-y-4">
-                                        <h2 className="text-5xl font-bold">{currentStepData.title}</h2>
-                                        <p className="text-xl text-muted-foreground">{currentStepData.subtitle}</p>
+                                    <div className="text-center space-y-4 px-4">
+                                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">{currentStepData.title}</h2>
+                                        <p className="text-base md:text-lg lg:text-xl text-muted-foreground">{currentStepData.subtitle}</p>
                                     </div>
 
-                                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                                        <Card className="p-8 text-center space-y-4 hover:scale-105 transition-transform duration-300 border-2 border-primary/20">
-                                            <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto">
-                                                <Zap className="w-8 h-8 text-primary" />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto px-4">
+                                        <Card className="p-6 md:p-8 text-center space-y-3 md:space-y-4 hover:scale-105 transition-transform duration-300 border-2 border-primary/20">
+                                            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto">
+                                                <Zap className="w-6 h-6 md:w-8 md:h-8 text-primary" />
                                             </div>
-                                            <h3 className="text-2xl font-bold">Opérationnel Rapidement</h3>
-                                            <p className="text-muted-foreground">Commencez à vendre dès le 1er Janvier</p>
-                                            <div className="pt-4 border-t">
-                                                <p className="text-3xl font-bold text-primary">3 mois</p>
-                                                <p className="text-sm text-muted-foreground">pour être opérationnel</p>
+                                            <h3 className="text-lg md:text-xl lg:text-2xl font-bold">Opérationnel Rapidement</h3>
+                                            <p className="text-sm md:text-base text-muted-foreground">Commencez à vendre dès le 1er Janvier</p>
+                                            <div className="pt-3 md:pt-4 border-t">
+                                                <p className="text-2xl md:text-3xl font-bold text-primary">3 mois</p>
+                                                <p className="text-xs md:text-sm text-muted-foreground">pour être opérationnel</p>
                                             </div>
                                         </Card>
 
@@ -827,28 +779,28 @@ export default function RoadmapPage() {
 
                 {/* COMPARATIF DES PROPOSITIONS */}
                 <div className="max-w-6xl mx-auto mt-16 space-y-8 animate-in fade-in duration-700">
-                    <div className="text-center space-y-4">
-                        <h2 className="text-5xl font-bold">Comparatif des Solutions</h2>
-                        <p className="text-xl text-muted-foreground">Choisissez l'approche qui correspond à vos besoins</p>
+                    <div className="text-center space-y-4 px-4">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Comparatif des Solutions</h2>
+                        <p className="text-base md:text-lg lg:text-xl text-muted-foreground">Choisissez l'approche qui correspond à vos besoins</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 px-4">
                         {/* Proposition 1 */}
-                        <Card className="p-8 border-2 border-muted/30 bg-card/50 relative overflow-hidden hover:scale-105 transition-transform duration-300">
-                            <div className="space-y-6">
+                        <Card className="p-6 md:p-8 border-2 border-muted/30 bg-card/50 relative overflow-hidden hover:scale-105 transition-transform duration-300">
+                            <div className="space-y-4 md:space-y-6">
                                 <div>
-                                    <h3 className="text-3xl font-bold mb-2">Approche Progressive</h3>
-                                    <p className="text-muted-foreground">Parcours de Vente + CRM</p>
+                                    <h3 className="text-2xl md:text-3xl font-bold mb-2">Approche Progressive</h3>
+                                    <p className="text-sm md:text-base text-muted-foreground">Parcours de Vente + CRM</p>
                                 </div>
 
-                                <div className="space-y-4">
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-5xl font-bold">0€</span>
-                                        <span className="text-muted-foreground">développement CRM</span>
+                                <div className="space-y-3 md:space-y-4">
+                                    <div className="flex flex-col sm:flex-row items-baseline gap-1 sm:gap-2">
+                                        <span className="text-3xl md:text-4xl lg:text-5xl font-bold">0€</span>
+                                        <span className="text-sm md:text-base text-muted-foreground">développement CRM</span>
                                     </div>
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-3xl font-bold">15€</span>
-                                        <span className="text-muted-foreground">/ utilisateur / mois</span>
+                                    <div className="flex flex-col sm:flex-row items-baseline gap-1 sm:gap-2">
+                                        <span className="text-2xl md:text-3xl font-bold">15€</span>
+                                        <span className="text-sm md:text-base text-muted-foreground">/ utilisateur / mois</span>
                                     </div>
                                     <div className="px-4 py-2 bg-primary/20 text-primary rounded-lg inline-block">
                                         <span className="font-bold">2 mois gratuits</span>
@@ -939,47 +891,47 @@ export default function RoadmapPage() {
                     </div>
 
                     {/* Tableau récapitulatif */}
-                    <Card className="p-8 bg-card/50 backdrop-blur border-2 border-muted/30">
-                        <h3 className="text-2xl font-bold mb-6 text-center">Tableau Récapitulatif</h3>
-                        <div className="overflow-x-auto">
-                            <table className="w-full">
+                    <Card className="p-4 md:p-6 lg:p-8 bg-card/50 backdrop-blur border-2 border-muted/30">
+                        <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center">Tableau Récapitulatif</h3>
+                        <div className="overflow-x-auto -mx-4 md:mx-0">
+                            <table className="w-full min-w-[600px] md:min-w-0">
                                 <thead>
                                     <tr className="border-b border-muted/20">
-                                        <th className="text-left py-4 px-4 font-bold">Critères</th>
-                                        <th className="text-center py-4 px-4 font-bold">Approche Progressive</th>
-                                        <th className="text-center py-4 px-4 font-bold">Développement Direct</th>
+                                        <th className="text-left py-3 md:py-4 px-2 md:px-4 font-bold text-xs md:text-sm lg:text-base">Critères</th>
+                                        <th className="text-center py-3 md:py-4 px-2 md:px-4 font-bold text-xs md:text-sm lg:text-base">Approche Progressive</th>
+                                        <th className="text-center py-3 md:py-4 px-2 md:px-4 font-bold text-xs md:text-sm lg:text-base">Développement Direct</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-muted/20">
                                     <tr>
-                                        <td className="py-4 px-4 font-medium">Coût initial</td>
-                                        <td className="text-center py-4 px-4">0€</td>
-                                        <td className="text-center py-4 px-4">21,000€</td>
+                                        <td className="py-3 md:py-4 px-2 md:px-4 font-medium text-xs md:text-sm">Coût initial</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">0€</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">21,000€</td>
                                     </tr>
                                     <tr>
-                                        <td className="py-4 px-4 font-medium">Coût mensuel CRM</td>
-                                        <td className="text-center py-4 px-4">15€ /utilisateur (2 mois gratuits)</td>
-                                        <td className="text-center py-4 px-4">-</td>
+                                        <td className="py-3 md:py-4 px-2 md:px-4 font-medium text-xs md:text-sm">Coût mensuel CRM</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">15€ /utilisateur (2 mois gratuits)</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">-</td>
                                     </tr>
                                     <tr>
-                                        <td className="py-4 px-4 font-medium">Disponibilité Parcours de Vente</td>
-                                        <td className="text-center py-4 px-4">1er Janvier 2026</td>
-                                        <td className="text-center py-4 px-4">Non inclus</td>
+                                        <td className="py-3 md:py-4 px-2 md:px-4 font-medium text-xs md:text-sm">Disponibilité Parcours de Vente</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">1er Janvier 2026</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">Non inclus</td>
                                     </tr>
                                     <tr>
-                                        <td className="py-4 px-4 font-medium">Disponibilité CRM</td>
-                                        <td className="text-center py-4 px-4">1er Mars 2026</td>
-                                        <td className="text-center py-4 px-4">1er Janvier 2026</td>
+                                        <td className="py-3 md:py-4 px-2 md:px-4 font-medium text-xs md:text-sm">Disponibilité CRM</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">1er Mars 2026</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">1er Janvier 2026</td>
                                     </tr>
                                     <tr>
-                                        <td className="py-4 px-4 font-medium">ROI</td>
-                                        <td className="text-center py-4 px-4">Immédiat (dès Janvier)</td>
-                                        <td className="text-center py-4 px-4">Après 3 mois</td>
+                                        <td className="py-3 md:py-4 px-2 md:px-4 font-medium text-xs md:text-sm">ROI</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">Immédiat (dès Janvier)</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">Après 3 mois</td>
                                     </tr>
                                     <tr>
-                                        <td className="py-4 px-4 font-medium">Évolutions futures</td>
-                                        <td className="text-center py-4 px-4">À mes frais</td>
-                                        <td className="text-center py-4 px-4">Coût supplémentaire</td>
+                                        <td className="py-3 md:py-4 px-2 md:px-4 font-medium text-xs md:text-sm">Évolutions futures</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">À mes frais</td>
+                                        <td className="text-center py-3 md:py-4 px-2 md:px-4 text-xs md:text-sm">Coût supplémentaire</td>
                                     </tr>
                                 </tbody>
                             </table>

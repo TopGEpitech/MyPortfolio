@@ -47,7 +47,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           {/* Sidebar */}
-          <div className="w-64 bg-slate-900/50 backdrop-blur-sm border-r border-slate-700 flex flex-col">
+          <div className="hidden md:flex md:w-64 bg-slate-900/50 backdrop-blur-sm border-r border-slate-700 flex-col">
             {/* Header */}
             <div className="p-6 border-b border-slate-700">
               <h1 className="text-xl font-bold text-white">ISOWATT CRM</h1>
@@ -98,8 +98,32 @@ export default function RootLayout({
             </nav>
           </div>
 
+          {/* Top navigation for mobile */}
+          <div className="md:hidden fixed top-0 left-0 right-0 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700 z-50">
+            <div className="flex items-center justify-between p-3">
+              <div className="flex items-center gap-2">
+                <h1 className="text-sm font-bold text-white">ISOWATT CRM</h1>
+              </div>
+              <div className="flex gap-1">
+                {topLinks.map((link) => {
+                  const Icon = link.icon
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="flex items-center gap-1 px-2 py-1.5 text-xs text-slate-400 hover:text-white hover:bg-slate-800 rounded transition-colors"
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                      <span className="hidden sm:inline">{link.label}</span>
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+
           {/* Main content */}
-          <div className="flex-1 overflow-auto">
+          <div className="flex-1 overflow-auto md:mt-0 mt-14">
             {children}
           </div>
         </div>

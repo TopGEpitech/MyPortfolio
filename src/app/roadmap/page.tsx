@@ -52,23 +52,23 @@ export default function RoadmapPage() {
             </div>
 
             {/* Navigation en haut à gauche */}
-            <div className="fixed top-4 left-4 z-50 flex gap-3">
+            <div className="fixed top-4 left-4 z-50 flex gap-2 md:gap-3">
                 <Link href="/parcoursvente">
-                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-2 font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
-                        <LayoutGrid className="w-5 h-5" />
-                        <span>Parcours</span>
+                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-2 py-2 md:px-4 md:py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-1 md:gap-2 text-xs md:text-base font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
+                        <LayoutGrid className="w-4 h-4 md:w-5 md:h-5" />
+                        <span className="hidden sm:inline">Parcours</span>
                     </button>
                 </Link>
                 <Link href="/proposals">
-                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-2 font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
-                        <Map className="w-5 h-5" />
-                        <span>Propositions</span>
+                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-2 py-2 md:px-4 md:py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-1 md:gap-2 text-xs md:text-base font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
+                        <Map className="w-4 h-4 md:w-5 md:h-5" />
+                        <span className="hidden sm:inline">Propositions</span>
                     </button>
                 </Link>
                 <Link href="/isowattcrm">
-                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-2 font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
-                        <ExternalLink className="w-5 h-5" />
-                        <span>CRM</span>
+                    <button className="bg-black/30 hover:bg-black/50 backdrop-blur-sm text-white px-2 py-2 md:px-4 md:py-2.5 rounded-lg transition-all shadow-xl flex items-center gap-1 md:gap-2 text-xs md:text-base font-semibold border-2 border-white/20 hover:border-white/40 hover:scale-105">
+                        <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
+                        <span className="hidden sm:inline">CRM</span>
                     </button>
                 </Link>
             </div>

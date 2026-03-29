@@ -86,6 +86,7 @@ export default function ProjectWizard() {
   // </CHANGE>
   const [showAppointments, setShowAppointments] = useState(false)
   const [openModal, setOpenModal] = useState<string | null>(null)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -267,19 +268,33 @@ export default function ProjectWizard() {
 
   return (
     // Updated sidebar and added appointments view
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex relative">
+      {/* Mobile Sidebar Toggle */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="md:hidden fixed top-4 left-4 z-50 bg-indigo-600 text-white p-3 rounded-lg shadow-xl"
+      >
+        <LayoutGrid className="w-5 h-5" />
+      </button>
+
       {/* Sidebar */}
-      <div className="w-80 bg-gradient-to-b from-blue-900 to-indigo-700 text-white p-6 shadow-2xl">
-        <div className="flex items-center justify-between mb-6 bg-gradient-to-r from-indigo-800 to-blue-800 p-4 rounded-xl border-2 border-white/30 shadow-xl">
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
-              <Sun className="w-9 h-9 text-indigo-600" />
+      <div className={`fixed md:static inset-y-0 left-0 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 ease-in-out z-40 w-80 bg-gradient-to-b from-blue-900 to-indigo-700 text-white p-4 md:p-6 shadow-2xl`}>
+        <div className="flex items-center justify-between mb-4 md:mb-6 bg-gradient-to-r from-indigo-800 to-blue-800 p-3 md:p-4 rounded-xl border-2 border-white/30 shadow-xl">
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+              <Sun className="w-7 h-7 md:w-9 md:h-9 text-indigo-600" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">ISOWATT</h1>
-              <p className="text-sm text-indigo-200">Groupe Auralliance</p>
+              <h1 className="text-xl md:text-2xl font-bold">ISOWATT</h1>
+              <p className="text-xs md:text-sm text-indigo-200">Groupe Auralliance</p>
             </div>
           </div>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="md:hidden text-white p-2"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         {!showAppointments && (
@@ -303,11 +318,11 @@ export default function ProjectWizard() {
               </Link>
             </div>
 
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-2">Parcours de vente</h2>
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-xl md:text-2xl font-bold mb-2">Parcours de vente</h2>
             </div>
 
-            <nav className="space-y-2">
+            <nav className="space-y-1.5 md:space-y-2">
               {steps.map((step, index) => {
                 const Icon = step.icon
                 const isActive = currentStep === step.id
@@ -316,8 +331,11 @@ export default function ProjectWizard() {
                 return (
                   <div key={step.id} className="relative">
                     <button
-                      onClick={() => setCurrentStep(step.id)}
-                      className={`w-full flex items-center gap-4 p-4 rounded-xl transition-all ${
+                      onClick={() => {
+                        setCurrentStep(step.id)
+                        setSidebarOpen(false)
+                      }}
+                      className={`w-full flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl transition-all ${
                         isActive
                           ? "bg-white text-indigo-900 shadow-lg scale-105"
                           : isCompleted
@@ -326,7 +344,7 @@ export default function ProjectWizard() {
                       }`}
                     >
                       <div
-                        className={`flex items-center justify-center w-10 h-10 rounded-full ${
+                        className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full ${
                           isActive
                             ? "bg-indigo-900 text-white"
                             : isCompleted
@@ -334,11 +352,11 @@ export default function ProjectWizard() {
                               : "bg-indigo-700 text-indigo-300"
                         }`}
                       >
-                        {isCompleted ? <Check className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
+                        {isCompleted ? <Check className="w-4 h-4 md:w-5 md:h-5" /> : <Icon className="w-4 h-4 md:w-5 md:h-5" />}
                       </div>
                       <div className="flex-1 text-left">
                         <div className="text-xs opacity-75 mb-1">Étape {step.id}</div>
-                        <div className="font-semibold">{step.name}</div>
+                        <div className="text-sm md:text-base font-semibold">{step.name}</div>
                       </div>
                     </button>
                     {index < steps.length - 1 && <div className="absolute left-9 top-full w-0.5 h-2 bg-indigo-700" />}
@@ -385,11 +403,19 @@ export default function ProjectWizard() {
         )}
       </div>
 
+      {/* Overlay for mobile sidebar */}
+      {sidebarOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-30"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Main Content */}
-      <div className="flex-1 p-12">
+      <div className="flex-1 p-4 md:p-8 lg:p-12 pt-16 md:pt-12">
         <button
             onClick={() => setShowAppointments(!showAppointments)}
-            className={`p-3 rounded-lg transition-all transform hover:scale-110 shadow-2xl relative overflow-hidden group border-2 border-black ${
+            className={`p-2 md:p-3 rounded-lg transition-all transform hover:scale-110 shadow-2xl relative overflow-hidden group border-2 border-black ${
                 showAppointments
                     ? "bg-blue-600/40 border-blue-500 text-blue-900"
                     : "bg-blue-500/30 border-blue-400 hover:bg-blue-500/40"
@@ -397,35 +423,35 @@ export default function ProjectWizard() {
             title="Rendez-vous"
         >
           <div className="absolute inset-0  bg-blue-400 group-hover:bg-blue-400/40 transition-colors duration-500"></div>
-          <User className="w-6 h-6 relative z-10 text-white-800 group-hover:text-blue-900 transition-all duration-300 drop-shadow-lg" />
+          <User className="w-5 h-5 md:w-6 md:h-6 relative z-10 text-white-800 group-hover:text-blue-900 transition-all duration-300 drop-shadow-lg" />
         </button>
 
         <div className="max-w-6xl mx-auto">
           {showAppointments ? (
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
+            <div className="space-y-4 md:space-y-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">Gestion des Rendez-vous</h1>
-                  <p className="text-gray-600 mt-1">Planifiez et suivez vos rendez-vous clients</p>
+                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Gestion des Rendez-vous</h1>
+                  <p className="text-sm md:text-base text-gray-600 mt-1">Planifiez et suivez vos rendez-vous clients</p>
                 </div>
-                <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all flex items-center gap-2 shadow-lg">
-                  <Plus className="w-5 h-5" />
+                <button className="bg-indigo-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all flex items-center gap-2 shadow-lg text-sm md:text-base w-full sm:w-auto">
+                  <Plus className="w-4 h-4 md:w-5 md:h-5" />
                   Nouveau rendez-vous
                 </button>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="flex gap-4 mb-6">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6">
+                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-4 md:mb-6">
                   <div className="flex-1 relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Rechercher un client, une adresse..."
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                      className="w-full pl-9 md:pl-10 pr-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm md:text-base"
                     />
                   </div>
-                  <button className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all flex items-center gap-2">
-                    <Filter className="w-5 h-5" />
+                  <button className="px-4 md:px-6 py-2 md:py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all flex items-center gap-2 justify-center text-sm md:text-base">
+                    <Filter className="w-4 h-4 md:w-5 md:h-5" />
                     Filtres
                   </button>
                 </div>
@@ -509,13 +535,13 @@ export default function ProjectWizard() {
               {currentStep === 1 && (
                 <Card className="border-0 shadow-xl">
                   <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-t-xl">
-                    <CardTitle className="text-2xl">Coordonnées du client</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl">Coordonnées du client</CardTitle>
                     <CardDescription className="text-indigo-100">
                       Commençons par quelques informations de base
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-6">
-                    <div className="grid grid-cols-2 gap-6">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="firstName">Prénom</Label>
                         <Input
@@ -575,7 +601,7 @@ export default function ProjectWizard() {
                       />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="postalCode">Code postal</Label>
                         <Input
@@ -605,19 +631,19 @@ export default function ProjectWizard() {
               {currentStep === 2 && (
                 <Card className="border-0 shadow-xl">
                   <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-t-xl">
-                    <CardTitle className="text-2xl">Étude du logement</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl">Étude du logement</CardTitle>
                     <CardDescription className="text-indigo-100">
                       Parlez-nous en détail de votre habitation
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-8">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-8">
                     {/* Type de logement */}
                     <div className="space-y-4">
                       <Label className="text-lg font-semibold">Type de logement</Label>
                       <RadioGroup
                         value={formData.housingType}
                         onValueChange={(value) => updateFormData("housingType", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         <div>
                           <RadioGroupItem value="house" id="house" className="peer sr-only" />
@@ -647,7 +673,7 @@ export default function ProjectWizard() {
                     <div className="space-y-6">
                       <h3 className="text-xl font-bold text-indigo-900">Architecture de la maison</h3>
 
-                      <div className="grid grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div className="space-y-2">
                           <Label htmlFor="constructionYear">Année de construction</Label>
                           <Select
@@ -686,7 +712,7 @@ export default function ProjectWizard() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                         <div className="space-y-2">
                           <Label htmlFor="floorSurface">Surface au sol (m²)</Label>
                           <Input
@@ -725,7 +751,7 @@ export default function ProjectWizard() {
                             <Minus className="h-4 w-4" />
                           </Button>
                           <div className="flex-1 text-center">
-                            <div className="text-3xl font-bold text-indigo-600">{formData.roomCount}</div>
+                            <div className="text-2xl md:text-3xl font-bold text-indigo-600">{formData.roomCount}</div>
                           </div>
                           <Button
                             type="button"
@@ -744,7 +770,7 @@ export default function ProjectWizard() {
                         <RadioGroup
                           value={formData.housePosition}
                           onValueChange={(value) => updateFormData("housePosition", value)}
-                          className="grid grid-cols-3 gap-4"
+                          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                         >
                           {[
                             { value: "independent", name: "Maison individuelle", icon: Home },
@@ -774,7 +800,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.houseShape}
                         onValueChange={(value) => updateFormData("houseShape", value)}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                       >
                         {[
                           { value: "square", label: "Carrée", icon: Building2 },
@@ -801,7 +827,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.floorCount.toString()}
                         onValueChange={(value) => updateFormData("floorCount", Number.parseInt(value))}
-                        className="grid grid-cols-4 gap-4"
+                        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
                       >
                         {[1, 2, 3].map((num) => (
                           <div key={num}>
@@ -856,7 +882,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.roofType}
                         onValueChange={(value) => updateFormData("roofType", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "2-slopes", label: "Toiture à 2 versants", icon: Home },
@@ -884,7 +910,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.roofCovering}
                         onValueChange={(value) => updateFormData("roofCovering", value)}
-                        className="grid grid-cols-4 gap-4"
+                        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
                       >
                         {["tuile", "ardoise", "tôle", "fibrociment"].map((material) => (
                           <div key={material}>
@@ -928,7 +954,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.atticType}
                         onValueChange={(value) => updateFormData("atticType", value)}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                       >
                         {[
                           { value: "converted", label: "Combles aménagés", icon: Home },
@@ -955,7 +981,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.atticInsulated}
                         onValueChange={(value) => updateFormData("atticInsulated", value)}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                       >
                         {["oui", "non", "je ne sais pas"].map((option) => (
                           <div key={option}>
@@ -979,7 +1005,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.wallMaterial}
                         onValueChange={(value) => updateFormData("wallMaterial", value)}
-                        className="grid grid-cols-4 gap-4"
+                        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
                       >
                         {[
                           { value: "stone", label: "Pierre", icon: Mountain },
@@ -1007,7 +1033,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.wallsInsulated}
                         onValueChange={(value) => updateFormData("wallsInsulated", value)}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                       >
                         {["oui", "non", "je ne sais pas"].map((option) => (
                           <div key={option}>
@@ -1029,7 +1055,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.glazingType}
                         onValueChange={(value) => updateFormData("glazingType", value)}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                       >
                         {[
                           { value: "simple", label: "Simple" },
@@ -1056,7 +1082,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.ventilationType}
                         onValueChange={(value) => updateFormData("ventilationType", value)}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                       >
                         {[
                           { value: "natural", label: "Naturelle", icon: Wind },
@@ -1085,7 +1111,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.basementType}
                         onValueChange={(value) => updateFormData("basementType", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "basement", label: "Cave ou sous-sol", icon: Warehouse },
@@ -1113,7 +1139,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.hasGarage}
                         onValueChange={(value) => updateFormData("hasGarage", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "oui", label: "Oui", icon: Home },
@@ -1145,7 +1171,7 @@ export default function ProjectWizard() {
                           <RadioGroup
                             value={formData.garageConfig}
                             onValueChange={(value) => updateFormData("garageConfig", value)}
-                            className="grid grid-cols-3 gap-4"
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                           >
                             {[
                               { value: "interior", label: "Garage intérieur" },
@@ -1172,7 +1198,7 @@ export default function ProjectWizard() {
                           <RadioGroup
                             value={formData.garageInsulated}
                             onValueChange={(value) => updateFormData("garageInsulated", value)}
-                            className="grid grid-cols-3 gap-4"
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                           >
                             {["oui", "non", "je ne sais pas"].map((option) => (
                               <div key={option}>
@@ -1200,7 +1226,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.hasGarden}
                         onValueChange={(value) => updateFormData("hasGarden", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "oui", label: "Oui", icon: TreePine },
@@ -1232,7 +1258,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.electricalInstallation}
                         onValueChange={(value) => updateFormData("electricalInstallation", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "single", label: "Monophasé" },
@@ -1259,7 +1285,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.environmentSensitivity}
                         onValueChange={(value) => updateFormData("environmentSensitivity", value)}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
                       >
                         {[
                           { value: "very", label: "Très sensible", icon: Leaf },
@@ -1288,12 +1314,12 @@ export default function ProjectWizard() {
               {currentStep === 3 && (
                 <Card className="border-0 shadow-xl">
                   <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-t-xl">
-                    <CardTitle className="text-2xl">Étude du potentiel solaire</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl">Étude du potentiel solaire</CardTitle>
                     <CardDescription className="text-indigo-100">
                       Analysons le potentiel solaire de votre habitation
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-8">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-8">
                     <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-200">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center">
@@ -1331,7 +1357,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.solarInstallationZone}
                         onValueChange={(value) => updateFormData("solarInstallationZone", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "roof", label: "Toiture de la maison", icon: Home },
@@ -1364,7 +1390,7 @@ export default function ProjectWizard() {
                           <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-center">
                               <div className="text-sm text-gray-500 mb-2">Orientation</div>
-                              <div className="text-3xl font-bold text-orange-600">Sud</div>
+                              <div className="text-2xl md:text-3xl font-bold text-orange-600">Sud</div>
                             </div>
                           </div>
                           {/* Compass directions */}
@@ -1391,7 +1417,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.panelOrientation}
                         onValueChange={(value) => updateFormData("panelOrientation", value)}
-                        className="grid grid-cols-4 gap-3"
+                        className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3"
                       >
                         {["Nord", "Nord-Est", "Est", "Sud-Est", "Sud", "Sud-Ouest", "Ouest", "Nord-Ouest"].map(
                           (direction) => (
@@ -1417,7 +1443,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.equipableSurface}
                         onValueChange={(value) => updateFormData("equipableSurface", value)}
-                        className="grid grid-cols-5 gap-4"
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
                       >
                         {[
                           { value: "0-15", label: "0 - 15m²" },
@@ -1443,7 +1469,7 @@ export default function ProjectWizard() {
 
                     <div className="space-y-4">
                       <Label className="text-lg font-semibold">Obstacle(s) du pan (choix multiple)</Label>
-                      <div className="grid grid-cols-4 gap-4">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                         {[
                           { value: "none", label: "Pas d'obstacle", icon: Home },
                           { value: "skylight", label: "Velux", icon: Building2 },
@@ -1489,7 +1515,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.solarMaskImpact}
                         onValueChange={(value) => updateFormData("solarMaskImpact", value)}
-                        className="grid grid-cols-5 gap-4"
+                        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
                       >
                         {[
                           { value: "0", label: "0%" },
@@ -1526,7 +1552,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.hasElectricVehicle}
                         onValueChange={(value) => updateFormData("hasElectricVehicle", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "oui", label: "Oui", icon: Zap },
@@ -1553,7 +1579,7 @@ export default function ProjectWizard() {
                       <RadioGroup
                         value={formData.plansToBuyEV}
                         onValueChange={(value) => updateFormData("plansToBuyEV", value)}
-                        className="grid grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4"
                       >
                         {[
                           { value: "oui", label: "Oui", icon: Zap },
@@ -1580,17 +1606,17 @@ export default function ProjectWizard() {
 
                     <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 border-2 border-green-200">
                       <h3 className="font-semibold text-lg mb-4 text-green-900">Résumé du potentiel solaire</h3>
-                      <div className="grid grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                         <div className="bg-white rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-yellow-600 mb-1">1,260</div>
+                          <div className="text-2xl md:text-3xl font-bold text-yellow-600 mb-1">1,260</div>
                           <div className="text-xs text-gray-600">kWh/m²/an</div>
                         </div>
                         <div className="bg-white rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-green-600 mb-1">4,500</div>
+                          <div className="text-2xl md:text-3xl font-bold text-green-600 mb-1">4,500</div>
                           <div className="text-xs text-gray-600">kWh/an produits</div>
                         </div>
                         <div className="bg-white rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-indigo-600 mb-1">680€</div>
+                          <div className="text-2xl md:text-3xl font-bold text-indigo-600 mb-1">680€</div>
                           <div className="text-xs text-gray-600">Économies/an</div>
                         </div>
                       </div>
@@ -1607,7 +1633,7 @@ export default function ProjectWizard() {
                     <CardTitle className="text-2xl">Consommation et équipement</CardTitle>
                     <CardDescription className="text-indigo-100">Estimez votre consommation actuelle</CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-6">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-6">
                     <div className="grid lg:grid-cols-2 gap-8">
                       {/* Left: Consumption cards */}
                       <div className="space-y-4">
@@ -1629,7 +1655,7 @@ export default function ProjectWizard() {
                               </div>
                             </div>
                             <div className="flex items-center gap-3">
-                              <div className="text-3xl font-bold">968€</div>
+                              <div className="text-2xl md:text-3xl font-bold">968€</div>
                               <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
@@ -1651,7 +1677,7 @@ export default function ProjectWizard() {
                               </div>
                             </div>
                             <div className="flex items-center gap-3">
-                              <div className="text-3xl font-bold">220€</div>
+                              <div className="text-2xl md:text-3xl font-bold">220€</div>
                               <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
@@ -1673,7 +1699,7 @@ export default function ProjectWizard() {
                               </div>
                             </div>
                             <div className="flex items-center gap-3">
-                              <div className="text-3xl font-bold">1440€</div>
+                              <div className="text-2xl md:text-3xl font-bold">1440€</div>
                               <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
@@ -1695,7 +1721,7 @@ export default function ProjectWizard() {
                               </div>
                             </div>
                             <div className="flex items-center gap-3">
-                              <div className="text-3xl font-bold">400€</div>
+                              <div className="text-2xl md:text-3xl font-bold">400€</div>
                               <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
@@ -1759,7 +1785,7 @@ export default function ProjectWizard() {
                                   y="55%"
                                   textAnchor="middle"
                                   dominantBaseline="middle"
-                                  className="text-3xl font-bold fill-gray-900"
+                                  className="text-2xl md:text-3xl font-bold fill-gray-900"
                                 >
                                   1800€
                                 </text>
@@ -1808,7 +1834,7 @@ export default function ProjectWizard() {
                       Découvrez les aides financières disponibles pour votre projet
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-6">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-6">
                     <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
@@ -1831,7 +1857,7 @@ export default function ProjectWizard() {
                                 <div className="font-bold text-lg text-blue-900">CEE</div>
                                 <div className="text-sm text-blue-700">Certificats d'économie d'énergie</div>
                               </div>
-                              <div className="text-3xl font-bold text-blue-600">3,200€</div>
+                              <div className="text-2xl md:text-3xl font-bold text-blue-600">3,200€</div>
                             </div>
                             <p className="text-sm text-blue-800">
                               Aide versée par les fournisseurs d'énergie pour financer vos travaux de rénovation
@@ -1847,7 +1873,7 @@ export default function ProjectWizard() {
                                 <div className="font-bold text-lg text-purple-900">Éco-PTZ</div>
                                 <div className="text-sm text-purple-700">Prêt à taux zéro</div>
                               </div>
-                              <div className="text-3xl font-bold text-purple-600">30,000€</div>
+                              <div className="text-2xl md:text-3xl font-bold text-purple-600">30,000€</div>
                             </div>
                             <p className="text-sm text-purple-800">
                               Prêt sans intérêts pour financer vos travaux de rénovation énergétique, remboursable sur
@@ -1863,7 +1889,7 @@ export default function ProjectWizard() {
                                 <div className="font-bold text-lg text-teal-900">TVA réduite</div>
                                 <div className="text-sm text-teal-700">Taux de TVA à 5.5%</div>
                               </div>
-                              <div className="text-3xl font-bold text-teal-600">963€</div>
+                              <div className="text-2xl md:text-3xl font-bold text-teal-600">963€</div>
                             </div>
                             <p className="text-sm text-teal-800">
                               Bénéficiez d'un taux de TVA réduit à 5,5% au lieu de 20% sur vos travaux de rénovation.
@@ -1893,7 +1919,7 @@ export default function ProjectWizard() {
                       Sélectionnez la solution adaptée à vos besoins
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-6">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-6">
                     <div className="grid gap-6">
                       <Card className="border-2 border-indigo-200 hover:border-indigo-500 hover:shadow-lg transition-all cursor-pointer">
                         <CardContent className="p-6">
@@ -1989,7 +2015,7 @@ export default function ProjectWizard() {
               {currentStep === 7 && (
                 <div className="space-y-6">
                   <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-[#E87B4E] mb-2">Simulation de votre projet</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#E87B4E] mb-2">Simulation de votre projet</h2>
                     <p className="text-gray-600">
                       Grâce aux solutions d'économies d'énergie et de production d'électricité que vous avez choisies,
                       Oréa a pu réaliser une simulation chiffrée de votre projet. En voici le détail.
@@ -2049,7 +2075,7 @@ export default function ProjectWizard() {
                             <div className="relative">
                               <Cloud className="w-32 h-32 text-green-500" />
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-3xl font-bold text-green-700">19 t</span>
+                                <span className="text-2xl md:text-3xl font-bold text-green-700">19 t</span>
                               </div>
                             </div>
                           </div>
@@ -2196,7 +2222,7 @@ export default function ProjectWizard() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                          <div className="grid grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                             <div className="text-center">
                               <div className="text-sm mb-2">Prix moyen du</div>
                               <div className="font-semibold mb-2">kWh Réseau</div>
@@ -2338,12 +2364,12 @@ export default function ProjectWizard() {
                       Vérifiez les informations et signez votre bon de commande
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-8">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-8">
                     {/* Document Header */}
                     <div className="border-b-2 border-slate-200 pb-6">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h2 className="text-3xl font-bold text-slate-900 mb-2">Bon de commande N° 2025-001</h2>
+                          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Bon de commande N° 2025-001</h2>
                           <p className="text-slate-600">Date: {new Date().toLocaleDateString("fr-FR")}</p>
                         </div>
                         <div className="text-right">
@@ -2430,7 +2456,7 @@ export default function ProjectWizard() {
                                 className="bg-white"
                               />
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                               <div>
                                 <Label htmlFor="installPostalCode">Code postal</Label>
                                 <Input
@@ -2709,12 +2735,12 @@ export default function ProjectWizard() {
                       Vérifiez les informations et signez votre bon de commande
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="p-8 space-y-8">
+                  <CardContent className="p-4 md:p-6 lg:p-8 space-y-8">
                     {/* Document Header */}
                     <div className="border-b-2 border-slate-200 pb-6">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h2 className="text-3xl font-bold text-slate-900 mb-2">Bon de commande N° 2025-001</h2>
+                          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Bon de commande N° 2025-001</h2>
                           <p className="text-slate-600">Date: {new Date().toLocaleDateString("fr-FR")}</p>
                         </div>
                         <div className="text-right">
@@ -2801,7 +2827,7 @@ export default function ProjectWizard() {
                                 className="bg-white"
                               />
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                               <div>
                                 <Label htmlFor="installPostalCode">Code postal</Label>
                                 <Input
@@ -3081,7 +3107,7 @@ export default function ProjectWizard() {
                         Votre projet d'installation solaire est prêt.
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="p-8 space-y-4">
+                    <CardContent className="p-4 md:p-6 lg:p-8 space-y-4">
                       <CheckCircle2 className="w-20 h-20 mx-auto text-green-500" />
                       <p className="text-gray-700">
                         Merci d'avoir utilisé notre assistant. Vous recevrez bientôt un récapitulatif par e-mail.
@@ -3173,7 +3199,7 @@ export default function ProjectWizard() {
               <RadioGroup
                 value={formData.heatingType}
                 onValueChange={(value) => updateFormData("heatingType", value)}
-                className="grid grid-cols-3 gap-4"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
               >
                 {[
                   { value: "condensing", label: "Chaudière Fioul à condensation" },
@@ -3231,7 +3257,7 @@ export default function ProjectWizard() {
                   <Minus className="h-4 w-4" />
                 </Button>
                 <div className="flex-1 text-center">
-                  <div className="text-3xl font-bold text-blue-600">{formData.comfortTemperature.toFixed(1)}°</div>
+                  <div className="text-2xl md:text-3xl font-bold text-blue-600">{formData.comfortTemperature.toFixed(1)}°</div>
                 </div>
                 <Button
                   type="button"
@@ -3278,7 +3304,7 @@ export default function ProjectWizard() {
 
             <div className="space-y-4">
               <Label className="text-lg font-semibold">Période(s) d'utilisation (choix multiple)</Label>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                 {[
                   { value: "morning-evening", label: "Matin et soir" },
                   { value: "day", label: "Journée" },
@@ -3548,7 +3574,7 @@ export default function ProjectWizard() {
               <RadioGroup
                 value={formData.lightingBulbType}
                 onValueChange={(value) => updateFormData("lightingBulbType", value)}
-                className="grid grid-cols-3 gap-4"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
               >
                 {[
                   { value: "incandescent", label: "Ampoules incandescentes" },
